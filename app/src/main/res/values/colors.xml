@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#FFFFFF</color>
+    <color name="colorPrimaryDark">#006DFF</color>
+    <color name="colorPrimaryDarkGradientEnd">#62A5FF</color>
+    <color name="colorAccent">#979797</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorShadow">#33000000</color>
+    <color name="colorShadow_letsGoButton">#26000000</color>
+    <color name="colorShadow_addClubButton">#1A000000</color>
+</resources>

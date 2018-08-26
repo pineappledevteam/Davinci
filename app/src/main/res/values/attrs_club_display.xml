@@ -1,0 +1,8 @@
+<resources>
+    <declare-styleable name="ClubDisplay">
+        <attr name="clubName" format="string" />
+        <attr name="fontSize" format="dimension" />
+        <attr name="startColor" format="color" />
+        <attr name="endColor" format="color" />
+    </declare-styleable>
+</resources>

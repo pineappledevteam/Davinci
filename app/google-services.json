@@ -1,0 +1,123 @@
+{
+  "project_info": {
+    "project_number": "415892562291",
+    "firebase_url": "https://pineapple-app001.firebaseio.com",
+    "project_id": "pineapple-app001",
+    "storage_bucket": "pineapple-app001.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415892562291:android:e1454600c433fa0e",
+        "android_client_info": {
+          "package_name": "com.pineapple.davinci"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415892562291-63ohkj95qcj1mecklefseeskm0v1hloq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pineapple.davinci",
+            "certificate_hash": "7007776c79904d9ffa16b111faf25989812d30d5"
+          }
+        },
+        {
+          "client_id": "415892562291-u0q5kkpk36e02q9gt7g6477oktpbvd79.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pineapple.davinci",
+            "certificate_hash": "b8ae35846989f32818ff74d83d31d4f2917986e0"
+          }
+        },
+        {
+          "client_id": "415892562291-u0q5kkpk36e02q9gt7g6477oktpbvd79.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pineapple.davinci",
+            "certificate_hash": "b8ae35846989f32818ff74d83d31d4f2917986e0"
+          }
+        },
+        {
+          "client_id": "415892562291-u0q5kkpk36e02q9gt7g6477oktpbvd79.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pineapple.davinci",
+            "certificate_hash": "b8ae35846989f32818ff74d83d31d4f2917986e0"
+          }
+        },
+        {
+          "client_id": "415892562291-mrb5obdmrcm1jruvi9apveef5onuo2v6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdW64gUumI__YW0sO69y3iKEHmR-ZYOmQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415892562291-mrb5obdmrcm1jruvi9apveef5onuo2v6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415892562291:android:794608fc00e69a5a",
+        "android_client_info": {
+          "package_name": "com.pineapple.davinci.clubs"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415892562291-pkv64q7snl0dgqjg715pna4gmuh570cv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.pineapple.davinci.clubs",
+            "certificate_hash": "b8ae35846989f32818ff74d83d31d4f2917986e0"
+          }
+        },
+        {
+          "client_id": "415892562291-mrb5obdmrcm1jruvi9apveef5onuo2v6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAdW64gUumI__YW0sO69y3iKEHmR-ZYOmQ"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415892562291-mrb5obdmrcm1jruvi9apveef5onuo2v6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

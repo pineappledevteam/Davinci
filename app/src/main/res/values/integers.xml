@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="logoFadeDelay">500</integer>
+    <integer name="minAge">11</integer>
+    <integer name="maxAge">21</integer>
+</resources>
