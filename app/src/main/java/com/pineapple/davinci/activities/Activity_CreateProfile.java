@@ -1,13 +1,10 @@
-package com.pineapple.davinci;
+package com.pineapple.davinci.activities;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RectShape;
-import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -20,17 +17,19 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.ViewSwitcher;
 
 import com.google.android.flexbox.FlexboxLayout;
 import com.google.firebase.auth.FirebaseUser;
+import com.pineapple.davinci.R;
 import com.pineapple.davinci.clubutils.Clubs_Delegate;
+import com.pineapple.davinci.resources.Constants;
+import com.pineapple.davinci.resources.MyCallback;
+import com.pineapple.davinci.resources.Singleton;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 
 public class Activity_CreateProfile extends AppCompatActivity {

@@ -1,6 +1,5 @@
 package com.pineapple.davinci.studentutils;
 
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -8,18 +7,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.pineapple.davinci.Constants;
-import com.pineapple.davinci.MyCallback;
-import com.pineapple.davinci.Singleton;
+import com.pineapple.davinci.resources.Constants;
+import com.pineapple.davinci.resources.MyCallback;
+import com.pineapple.davinci.resources.Singleton;
 import com.pineapple.davinci.clubutils.Club;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Mudit on 6/11/2018.

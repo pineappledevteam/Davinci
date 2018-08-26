@@ -1,9 +1,5 @@
 package com.pineapple.davinci.clubutils;
 
-import android.util.Pair;
-
-import com.pineapple.davinci.ClubDisplay;
-
 import java.util.ArrayList;
 
 /**

@@ -1,4 +1,4 @@
-package com.pineapple.davinci;
+package com.pineapple.davinci.resources;
 
 import android.graphics.Color;
 import android.support.annotation.Dimension;

@@ -1,7 +1,7 @@
 package com.pineapple.davinci.clubutils;
 
-import com.pineapple.davinci.MyCallback;
-import com.pineapple.davinci.MyException;
+import com.pineapple.davinci.resources.MyCallback;
+import com.pineapple.davinci.resources.MyException;
 import com.pineapple.davinci.studentutils.Student;
 import com.pineapple.davinci.studentutils.Student_Delegate;
 

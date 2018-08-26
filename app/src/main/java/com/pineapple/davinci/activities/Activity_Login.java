@@ -1,4 +1,4 @@
-package com.pineapple.davinci;
+package com.pineapple.davinci.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -26,6 +26,10 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
 
 import com.google.firebase.database.FirebaseDatabase;
+import com.pineapple.davinci.R;
+import com.pineapple.davinci.resources.Constants;
+import com.pineapple.davinci.resources.MyCallback;
+import com.pineapple.davinci.resources.Singleton;
 import com.pineapple.davinci.studentutils.Student;
 import com.pineapple.davinci.studentutils.Student_Delegate;
 

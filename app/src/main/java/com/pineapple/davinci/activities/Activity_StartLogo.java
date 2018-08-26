@@ -1,4 +1,4 @@
-package com.pineapple.davinci;
+package com.pineapple.davinci.activities;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -42,7 +42,6 @@ public class Activity_StartLogo extends AppCompatActivity {
             public void onAnimationRepeat(Animation animation) {}
         });
 
-        final boolean[] rectUp = {false};
         final Animation transAnim_rect = new TranslateAnimation(0,0,screen.getHeight(),0);
         transAnim_rect.setDuration(300);
         transAnim_rect.setAnimationListener(new Animation.AnimationListener() {
@@ -55,10 +54,6 @@ public class Activity_StartLogo extends AppCompatActivity {
         });
 
         gradientRect.startAnimation(transAnim_rect);
-        //while(!rectUp[0]){}
-
-
-
 
     }
 

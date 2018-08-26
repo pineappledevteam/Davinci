@@ -1,4 +1,4 @@
-package com.pineapple.davinci;
+package com.pineapple.davinci.resources;
 
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;

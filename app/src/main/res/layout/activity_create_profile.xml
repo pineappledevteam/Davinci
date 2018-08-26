@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/gradient_rectangle"
     android:fitsSystemWindows="true"
-    tools:context="com.pineapple.davinci.Activity_CreateProfile">
+    tools:context="com.pineapple.davinci.activities.Activity_CreateProfile">
     <!--android:clipToOutline="true"-->
 
 

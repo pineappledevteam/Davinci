@@ -11,16 +11,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="stateHidden|adjustResize" >
-        <activity android:name=".Activity_StartLogo">
+        <activity android:name=".activities.Activity_StartLogo">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity_Login" />
-        <activity android:name=".Activity_Dashboard" />
-        <activity android:name=".Activity_CreateProfile"></activity>
+        <activity android:name=".activities.Activity_Login" />
+        <activity android:name=".activities.Activity_Dashboard" />
+        <activity android:name=".activities.Activity_CreateProfile"></activity>
     </application>
 
 </manifest>

@@ -1,7 +1,6 @@
 package com.pineapple.davinci.clubutils;
 
 import android.graphics.Color;
-import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.util.Log;
 
@@ -9,21 +8,11 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.ValueEventListener;
-import com.pineapple.davinci.Constants;
-import com.pineapple.davinci.MyCallback;
-import com.pineapple.davinci.Singleton;
+import com.pineapple.davinci.resources.Constants;
+import com.pineapple.davinci.resources.MyCallback;
+import com.pineapple.davinci.resources.Singleton;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Objects;
-import java.util.concurrent.ExecutionException;
-import java.util.function.Consumer;
 
 /**
  * Created by Mudit on 8/1/2018.
@@ -99,6 +88,12 @@ public class Clubs_Delegate {
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) { callback.accept(Constants.defaultClubGradient.clone()); }
         });
+    }
+
+    public static void writeNewClub(Club club) {
+        DatabaseReference dbRef = Singleton.getInstance().getDatabaseRef();
+        DatabaseReference clubDatabase = dbRef.child(Constants.DB_Tables_Clubs);
+        clubDatabase.child(club.getNameString()).setValue(club);
     }
 
 }

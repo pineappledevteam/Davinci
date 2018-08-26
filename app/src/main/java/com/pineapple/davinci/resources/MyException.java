@@ -1,4 +1,4 @@
-package com.pineapple.davinci;
+package com.pineapple.davinci.resources;
 
 /**
  * Created by Mudit on 6/11/2018.

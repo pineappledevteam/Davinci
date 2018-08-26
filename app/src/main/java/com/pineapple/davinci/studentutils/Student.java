@@ -1,6 +1,6 @@
 package com.pineapple.davinci.studentutils;
 
-import com.pineapple.davinci.Constants;
+import com.pineapple.davinci.resources.Constants;
 import com.pineapple.davinci.clubutils.Club;
 
 import java.util.ArrayList;
