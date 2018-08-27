@@ -4,6 +4,7 @@
 /.gradle
 .gradle/*
 /local.properties
+local.properties
 /.idea/workspace.xml
 .idea/*
 .idea
