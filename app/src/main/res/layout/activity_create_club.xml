@@ -4,6 +4,340 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/gradient_rectangle"
     tools:context=".activities.Activity_CreateClub">
+
+
+    <ImageView
+        android:id="@+id/insignia"
+        android:layout_width="70dp"
+        android:layout_height="33dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="37dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/gsmstinsignia"
+        tools:ignore="contentDescription" />
+
+    <TextView
+        android:id="@+id/txtGSMST"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="8dp"
+        android:height="21sp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/gsmst"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/insignia"
+        app:layout_constraintStart_toEndOf="@+id/insignia"
+        app:layout_constraintTop_toTopOf="@+id/insignia" />
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="20dp"
+
+        android:background="@drawable/lets_go_button"
+        android:elevation="10dp"
+        android:fontFamily="sans-serif-medium"
+        android:shadowColor="@color/colorShadow_letsGoButton"
+        android:shadowDx="2"
+        android:shadowDy="2"
+
+        android:shadowRadius="10"
+        android:stateListAnimator="@null"
+        android:text="@string/cancel"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+
+        app:layout_constraintBottom_toBottomOf="@+id/txtGSMST"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/txtGSMST" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="0dp"
+        android:layout_height="66dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="21dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginTop="106dp"
+        android:height="42sp"
+        android:fontFamily="sans-serif-medium"
+        android:text="@string/welcome"
+        android:textColor="@android:color/white"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/letsGoButton"
+        android:layout_width="131dp"
+        android:layout_height="44dp"
+        android:layout_marginBottom="63dp"
+        android:layout_marginEnd="54dp"
+
+        android:height="16sp"
+
+        android:background="@drawable/lets_go_button"
+        android:elevation="10dp"
+        android:fontFamily="sans-serif-medium"
+        android:shadowColor="@color/colorShadow_letsGoButton"
+        android:shadowDx="2"
+        android:shadowDy="2"
+
+        android:shadowRadius="10"
+        android:stateListAnimator="@null"
+        android:text="@string/lets_go"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_above="@+id/letsGoButton"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="31dp"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/letsGoButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/welcome">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <EditText
+                android:id="@+id/gradeEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="54dp"
+                android:layout_marginStart="54dp"
+
+                android:height="16sp"
+
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-medium"
+                android:hint="@string/grade"
+
+                android:inputType="number"
+                android:maxLength="2"
+
+                android:paddingTop="0dp"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/ageEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="54dp"
+                android:layout_marginStart="54dp"
+
+                android:layout_marginTop="26dp"
+                android:height="16sp"
+
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-medium"
+
+                android:hint="@string/age"
+                android:inputType="number"
+                android:maxLength="2"
+
+                android:paddingTop="0dp"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/gradeEdit" />
+
+            <EditText
+                android:id="@+id/studIDEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="54dp"
+                android:layout_marginStart="54dp"
+
+                android:layout_marginTop="26dp"
+
+                android:height="16sp"
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-medium"
+
+                android:hint="@string/studID"
+                android:inputType="number"
+                android:maxLength="9"
+
+                android:paddingTop="0dp"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ageEdit" />
+
+            <EditText
+                android:id="@+id/descEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="54dp"
+                android:layout_marginStart="54dp"
+
+                android:layout_marginTop="26dp"
+                android:height="16sp"
+
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-medium"
+
+                android:hint="@string/desc"
+                android:inputType="textMultiLine"
+
+                android:paddingTop="0dp"
+                android:selectAllOnFocus="false"
+                android:singleLine="false"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/studIDEdit" />
+
+
+            <com.google.android.flexbox.FlexboxLayout
+                android:id="@+id/clubsFlex"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+
+
+                android:layout_marginEnd="54dp"
+                android:layout_marginStart="54dp"
+                android:layout_marginTop="26dp"
+                android:paddingEnd="4dp"
+                android:paddingStart="4dp"
+
+                app:flexWrap="wrap"
+                app:alignContent="flex_start"
+                app:alignItems="flex_start"
+                app:justifyContent="flex_start"
+                app:dividerDrawable="@drawable/divider"
+
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/descEdit">
+
+                <ViewSwitcher
+                    android:id="@+id/addButtonAndText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:animateFirstView="false"
+                    android:padding="0dp">
+
+
+                    <AutoCompleteTextView
+                        android:id="@+id/clubName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
+                        android:height="16sp"
+                        android:backgroundTint="@android:color/transparent"
+                        android:dropDownHeight="wrap_content"
+                        android:layout_marginEnd="54dp"
+                        android:hint="@string/clubs"
+                        android:inputType="textAutoComplete"
+                        android:paddingBottom="0dp"
+                        android:paddingEnd="0dp"
+                        android:paddingStart="0dp"
+                        android:paddingTop="0dp"
+                        android:textColor="@android:color/white"
+                        android:textColorHint="@android:color/white"
+                        android:textSize="14sp" />
+
+                    <Button
+                        android:id="@+id/addClubButton"
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:elevation="15dp"
+                        android:text = "@string/plus"
+                        android:textSize="18sp"
+                        android:background="@drawable/add_club_button"
+                        android:textColor="@android:color/white"
+                        />
+
+                </ViewSwitcher>
+            </com.google.android.flexbox.FlexboxLayout>
+
+            <View
+                android:id="@+id/clubDividerLine"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginEnd="58dp"
+
+                android:layout_marginStart="58dp"
+                android:layout_marginTop="-3dp"
+                android:background="@android:color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/addButtonAndText" />
+
+
+            <EditText
+                android:id="@+id/relStatEdit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="54dp"
+                android:layout_marginStart="54dp"
+
+                android:layout_marginTop="33dp"
+                android:height="16sp"
+
+                android:backgroundTint="@android:color/white"
+                android:fontFamily="sans-serif-medium"
+
+                android:hint="@string/relStat"
+                android:inputType="text"
+
+                android:paddingTop="0dp"
+                android:selectAllOnFocus="false"
+                android:singleLine="false"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/clubDividerLine" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+
 
 </android.support.constraint.ConstraintLayout>
