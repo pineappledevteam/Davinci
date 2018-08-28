@@ -90,7 +90,9 @@ public class Student {
         for(Club club: clubList) {
             clubListString += club.getNameString() + ",";
         }
-        clubListString = clubListString.substring(0,clubListString.lastIndexOf(","));
+        if(clubListString.contains(",")) {
+            clubListString = clubListString.substring(0, clubListString.lastIndexOf(","));
+        }
         data.put(Constants.DB_Cols_Clubs,clubListString);
         data.put(Constants.DB_Cols_Relationship,relationshipStatus);
 
