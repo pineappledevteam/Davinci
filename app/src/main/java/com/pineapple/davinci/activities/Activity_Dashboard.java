@@ -11,7 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
+import android.support.design.widget.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.pineapple.davinci.R;
@@ -57,48 +57,6 @@ public class Activity_Dashboard extends AppCompatActivity {
                 Singleton.getInstance().getGsiClient().signOut();
             }
         });
-
-    }
-
-    private void setupFirebaseListener() {
-        Log.d(TAG, "setupFirebaseListener: setting up auth state listener");
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if(user != null){
-                    Log.d(TAG, "onAuthStateChanged: signed_in " + user.getUid());
-                }
-                else{
-                    Log.d(TAG, "onAuthStateChanged: signed_out");
-                    Toast.makeText(Activity_Dashboard.this, "Signed out", Toast.LENGTH_SHORT).show();
-                    Singleton.getInstance().signOut();
-                    Intent startIntent = new Intent(getApplicationContext(), Activity_Login.class);
-                    startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(startIntent);
-                }
-            }
-        };
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        FirebaseAuth.getInstance().addAuthStateListener(mAuthStateListener);
-    }
-
-    @Override
-    protected void onStop(){
-        super.onStop();
-        if(mAuthStateListener != null) {
-            FirebaseAuth.getInstance().removeAuthStateListener(mAuthStateListener);
-        }
-    }
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_dashboard);
-
         BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
@@ -136,4 +94,40 @@ public class Activity_Dashboard extends AppCompatActivity {
             }
         });
     }
+
+    private void setupFirebaseListener() {
+        Log.d(TAG, "setupFirebaseListener: setting up auth state listener");
+        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser user = firebaseAuth.getCurrentUser();
+                if(user != null){
+                    Log.d(TAG, "onAuthStateChanged: signed_in " + user.getUid());
+                }
+                else{
+                    Log.d(TAG, "onAuthStateChanged: signed_out");
+                    Toast.makeText(Activity_Dashboard.this, "Signed out", Toast.LENGTH_SHORT).show();
+                    Singleton.getInstance().signOut();
+                    Intent startIntent = new Intent(getApplicationContext(), Activity_Login.class);
+                    startIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    startActivity(startIntent);
+                }
+            }
+        };
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseAuth.getInstance().addAuthStateListener(mAuthStateListener);
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        if(mAuthStateListener != null) {
+            FirebaseAuth.getInstance().removeAuthStateListener(mAuthStateListener);
+        }
+    }
+
 }

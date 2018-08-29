@@ -40,7 +40,7 @@ public class Activity_Profile extends AppCompatActivity {
                         startActivity(startIntent3);
                         break;
                     case R.id.navigation_clubs:
-                        Intent startIntent4 = new Intent(getApplicationContext(), Activity_Eclass.class);
+                        Intent startIntent4 = new Intent(getApplicationContext(), Activity_Clubs.class);
                         startActivity(startIntent4);
                         break;
                     case R.id.navigation_Settings:
