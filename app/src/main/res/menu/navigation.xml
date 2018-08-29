@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_dashboard"
+        android:icon="@drawable/ic_dashboard_black_24dp"
+
+        />
+    <item
+        android:id="@+id/navigation_calendar"
+        android:icon="@drawable/ic_event_black_24dp"
+        />
+    <item
+        android:id="@+id/navigation_eclass"
+        android:icon="@drawable/ic_class_black_24dp"
+
+        />
+
+    <item
+        android:id="@+id/navigation_clubs"
+        android:icon="@drawable/ic_group_work_black_24dp"
+
+        />
+
+    <item
+        android:id="@+id/navigation_Settings"
+        android:icon="@drawable/ic_account_circle_black_24dp"
+        />
+</menu>

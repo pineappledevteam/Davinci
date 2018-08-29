@@ -9,7 +9,6 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
-
 import com.pineapple.davinci.R;
 
 public class Activity_StartLogo extends AppCompatActivity {
