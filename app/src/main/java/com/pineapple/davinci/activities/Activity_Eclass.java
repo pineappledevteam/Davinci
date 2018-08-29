@@ -8,6 +8,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.view.Menu;
 import android.view.MenuItem;
 import com.pineapple.davinci.R;
+import com.pineapple.davinci.resources.BottomNavigationViewHelper;
 
 public class Activity_Eclass extends AppCompatActivity {
 
@@ -16,7 +17,7 @@ public class Activity_Eclass extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_eclass);
 
-        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottom_navigation);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(2);
