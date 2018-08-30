@@ -11,6 +11,7 @@ public class Club {
     private String nameString;
     private String[] clubColors;
 
+    private ArrayList<String> sponsors;
     private ArrayList<ClubMember> members;
     private ArrayList<Event> events;
     //private ArrayList<Polls> polls; TODO: make polls
@@ -34,4 +35,11 @@ public class Club {
 
     public ArrayList<Event> getEvents() { return events; }
     void setEvents(ArrayList<Event> events) { this.events = events; }
+
+    public ArrayList<String> getSponsors() {
+        return sponsors;
+    }
+    void setSponsors(ArrayList<String> sponsors) {
+        this.sponsors = sponsors;
+    }
 }
