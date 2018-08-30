@@ -3,26 +3,28 @@
     <item
         android:id="@+id/navigation_dashboard"
         android:icon="@drawable/ic_dashboard_black_24dp"
-
+        android:title="@string/dashboard"
         />
     <item
         android:id="@+id/navigation_calendar"
         android:icon="@drawable/ic_event_black_24dp"
+        android:title="@string/calendar"
         />
     <item
         android:id="@+id/navigation_eclass"
         android:icon="@drawable/ic_class_black_24dp"
-
+        android:title="@string/eclass"
         />
 
     <item
         android:id="@+id/navigation_clubs"
         android:icon="@drawable/ic_group_work_black_24dp"
-
+        android:title="@string/clubs"
         />
 
     <item
-        android:id="@+id/navigation_Settings"
+        android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_account_circle_black_24dp"
+        android:title="@string/profile"
         />
 </menu>
