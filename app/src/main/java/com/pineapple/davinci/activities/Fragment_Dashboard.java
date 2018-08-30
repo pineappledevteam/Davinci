@@ -75,11 +75,12 @@ public class Fragment_Dashboard extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-
-        TextView userID = (TextView) findViewById(R.id.userID);
-        TextView name = (TextView) findViewById(R.id.name);
+        //TODO - fix findViewByID
+        TextView userID = (TextView) getActivity().findViewById(R.id.userID);
+        TextView name = (TextView) getActivity().findViewById(R.id.name);
 
         Student student = Singleton.getInstance().getCurrStudent();
+        Log.d("fragtest",student.toString());
 
         userID.setText(student.getMyUserID());
         name.setText(student.getFirstName() + " " + student.getLastName());

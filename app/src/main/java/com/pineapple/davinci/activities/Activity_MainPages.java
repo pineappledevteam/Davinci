@@ -1,6 +1,7 @@
 package com.pineapple.davinci.activities;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -19,16 +20,20 @@ import com.pineapple.davinci.R;
 import com.pineapple.davinci.resources.BottomNavigationViewHelper;
 import com.pineapple.davinci.resources.Singleton;
 
-public class Activity_MainPages extends AppCompatActivity {
+public class Activity_MainPages extends AppCompatActivity
+        implements Fragment_Dashboard.OnFragmentInteractionListener,
+        Fragment_Calendar.OnFragmentInteractionListener,
+        Fragment_eClass.OnFragmentInteractionListener,
+        Fragment_Clubs.OnFragmentInteractionListener,
+        Fragment_Profile.OnFragmentInteractionListener {
 
     BottomNavigationView bottomNavigationView;
+    Fragment dashboardFragment;
+    Fragment calendarFragment;
+    Fragment eClassFragment;
+    Fragment clubsFragment;
+    Fragment profileFragment;
 
-
-    final Fragment dashboardFragment = new Fragment_Dashboard();
-    final Fragment calendarFragment = new Fragment_Calendar();
-    final Fragment eClassFragment = new Fragment_eClass();
-    final Fragment clubsFragment = new Fragment_Clubs();
-    final Fragment profileFragment = new Fragment_Profile();
     final FragmentManager fragmentManager = getSupportFragmentManager();
     Fragment previous;
     Fragment active = dashboardFragment;
@@ -36,6 +41,13 @@ public class Activity_MainPages extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //initialize fragments
+        dashboardFragment = new Fragment_Dashboard();
+        calendarFragment = new Fragment_Calendar();
+        eClassFragment = new Fragment_eClass();
+        clubsFragment = new Fragment_Clubs();
+        profileFragment = new Fragment_Profile();
+        //end fragments
         setContentView(R.layout.activity_main_pages);
 
         fragmentManager.beginTransaction().add(R.id.fragMainContainer, calendarFragment, "calendar fragment").hide(calendarFragment).commit();
@@ -81,14 +93,10 @@ public class Activity_MainPages extends AppCompatActivity {
             }
         });
     }
-    @Override
-    protected void onStart() {
-        super.onStart();
-    }
+
 
     @Override
-    protected void onStop(){
-        super.onStop();
+    public void onFragmentInteraction(Uri uri) {
+        //hi
     }
-
 }
