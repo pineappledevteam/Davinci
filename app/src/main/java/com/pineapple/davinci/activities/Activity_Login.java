@@ -84,7 +84,7 @@ public class Activity_Login extends AppCompatActivity {
         Singleton.getInstance().setGapiClient(mGoogleApiClient);
 
         // Set the dimensions of the sign-in button.
-        signInButton = (SignInButton) findViewById(R.id.sign_in_button);
+        signInButton = findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
         signInButton.setVisibility(View.INVISIBLE);
 
@@ -144,7 +144,7 @@ public class Activity_Login extends AppCompatActivity {
                             Log.d("singleton","save student");
                             Singleton.getInstance().setCurrStudent(student);
                         }
-                        Intent toDashBoardIntent = new Intent(getApplicationContext(),Activity_Dashboard.class);
+                        Intent toDashBoardIntent = new Intent(getApplicationContext(),Activity_MainPages.class);
                         Singleton.getInstance().setSignedInSuccess(true);
                         startActivity(toDashBoardIntent);
                     } else {
@@ -244,7 +244,7 @@ public class Activity_Login extends AppCompatActivity {
         Singleton.getInstance().setCurrStudent(profile);
         Student_Delegate.writeNewStudent();
 
-        Intent toDashBoardIntent = new Intent(this,Activity_Dashboard.class);
+        Intent toDashBoardIntent = new Intent(this,Activity_MainPages.class);
         Singleton.getInstance().setSignedInSuccess(true);
         startActivity(toDashBoardIntent);
     }

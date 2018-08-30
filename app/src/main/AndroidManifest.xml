@@ -7,6 +7,7 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:fullBackupContent="false"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
@@ -19,14 +20,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.Activity_Login" />
-        <activity android:name=".activities.Activity_Dashboard" />
+        <activity android:name=".activities.Activity_MainPages" android:launchMode="singleTop"/>
         <activity android:name=".activities.Activity_CreateProfile" />
         <activity android:name=".activities.Activity_CreateClub" />
-        <activity android:name=".activities.Activity_Dashboard2" />
-        <activity android:name=".activities.Activity_Calendar" />
-        <activity android:name=".activities.Activity_Eclass" />
-        <activity android:name=".activities.Activity_Clubs" />
-        <activity android:name=".activities.Activity_Profile"></activity>
     </application>
 
 </manifest>

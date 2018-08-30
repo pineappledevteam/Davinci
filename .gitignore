@@ -1,4 +1,6 @@
 *.iml
+davinci.iml
+app/app.iml
 .gradle
 /.gradle/*
 /.gradle
