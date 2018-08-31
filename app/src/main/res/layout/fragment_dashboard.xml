@@ -7,7 +7,7 @@
     tools:context=".activities.Fragment_Dashboard"
     android:id="@+id/fragDashboard">
 
-    <!-- TODO: Update blank fragment layout -->
+
     <TextView
         android:id="@+id/userID"
         android:layout_width="match_parent"

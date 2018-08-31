@@ -141,6 +141,11 @@ public class Fragment_Dashboard extends Fragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
     public void onStop(){
         super.onStop();
         if(mAuthStateListener != null) {

@@ -59,6 +59,7 @@ public class Activity_MainPages extends AppCompatActivity
 
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setLabelVisibilityMode(0);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(0);
@@ -68,19 +69,19 @@ public class Activity_MainPages extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()) {
                     case R.id.navigation_dashboard:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,dashboardFragment).commit();
+                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,dashboardFragment).addToBackStack("dashboard fragment").commit();
                         return true;
                     case R.id.navigation_calendar:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,calendarFragment).commit();
+                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,calendarFragment).addToBackStack("calendar fragment").commit();
                         return true;
                     case R.id.navigation_eclass:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,eClassFragment).commit();
+                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,eClassFragment).addToBackStack("eClass fragment").commit();
                         return true;
                     case R.id.navigation_clubs:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,clubsFragment).commit();
+                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,clubsFragment).addToBackStack("clubs fragment").commit();
                         return true;
                     case R.id.navigation_profile:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,profileFragment).commit();
+                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,profileFragment).addToBackStack("profile fragment").commit();
                         return true;
                 }
             return false;
