@@ -69,26 +69,36 @@ public class Fragment_Dashboard extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) { //TODO: no UI init here!!
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
-        //TODO - fix findViewByID
-        TextView userID = (TextView) getActivity().findViewById(R.id.userID);
-        TextView name = (TextView) getActivity().findViewById(R.id.name);
+        setupFirebaseListener();
+    }
+
+    @Override
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_dashboard, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        TextView userID = view.findViewById(R.id.userID);
+        TextView name = view.findViewById(R.id.name);
 
         Student student = Singleton.getInstance().getCurrStudent();
-        Log.d("fragtest",student.toString());
 
         userID.setText(student.getMyUserID());
-        name.setText(student.getFirstName() + " " + student.getLastName());
+        String fullName = student.getFirstName() + " " + student.getLastName();
+        name.setText(fullName);
 
-        setupFirebaseListener();
-
-
-        signout = (Button) findViewById(R.id.button_signout);
+        signout = view.findViewById(R.id.button_signout);
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -134,17 +144,6 @@ public class Fragment_Dashboard extends Fragment {
         if(mAuthStateListener != null) {
             FirebaseAuth.getInstance().removeAuthStateListener(mAuthStateListener);
         }
-    }
-
-    private View findViewById(int id) {
-        return getActivity().findViewById(id);
-    }
-
-    @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
