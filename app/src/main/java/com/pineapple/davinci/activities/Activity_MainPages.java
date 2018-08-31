@@ -59,7 +59,7 @@ public class Activity_MainPages extends AppCompatActivity
 
 
         bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setLabelVisibilityMode(0);
+        bottomNavigationView.setLabelVisibilityMode(2);
         BottomNavigationViewHelper.disableShiftMode(bottomNavigationView);
         Menu menu = bottomNavigationView.getMenu();
         MenuItem menuItem = menu.getItem(0);
@@ -88,7 +88,6 @@ public class Activity_MainPages extends AppCompatActivity
             }
         });
     }
-
 
     @Override
     public void onFragmentInteraction(Uri uri) {
