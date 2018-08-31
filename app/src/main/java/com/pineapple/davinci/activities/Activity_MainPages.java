@@ -35,12 +35,12 @@ public class Activity_MainPages extends AppCompatActivity
     Fragment profileFragment;
 
     final FragmentManager fragmentManager = getSupportFragmentManager();
-    Fragment previous;
-    Fragment active = dashboardFragment;
+    Fragment active;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main_pages);
         //initialize fragments
         dashboardFragment = new Fragment_Dashboard();
         calendarFragment = new Fragment_Calendar();
@@ -48,14 +48,13 @@ public class Activity_MainPages extends AppCompatActivity
         clubsFragment = new Fragment_Clubs();
         profileFragment = new Fragment_Profile();
         //end fragments
-        setContentView(R.layout.activity_main_pages);
 
         fragmentManager.beginTransaction().add(R.id.fragMainContainer, calendarFragment, "calendar fragment").hide(calendarFragment).commit();
         fragmentManager.beginTransaction().add(R.id.fragMainContainer, eClassFragment, "eClass fragment").hide(eClassFragment).commit();
         fragmentManager.beginTransaction().add(R.id.fragMainContainer, clubsFragment, "clubs fragment").hide(clubsFragment).commit();
         fragmentManager.beginTransaction().add(R.id.fragMainContainer, profileFragment, "profile fragment").hide(profileFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.fragMainContainer, dashboardFragment, "dashboard fragment").commit();
-
+        fragmentManager.beginTransaction().add(R.id.fragMainContainer, dashboardFragment, "dashboard fragment").show(dashboardFragment).commit();
+        active = dashboardFragment;
 
 
 
@@ -69,24 +68,19 @@ public class Activity_MainPages extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()) {
                     case R.id.navigation_dashboard:
-                        fragmentManager.beginTransaction().hide(active).show(dashboardFragment).commit();
-                        active = dashboardFragment;
+                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,dashboardFragment).commit();
                         return true;
                     case R.id.navigation_calendar:
-                        fragmentManager.beginTransaction().hide(active).show(calendarFragment).commit();
-                        active = calendarFragment;
+                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,calendarFragment).commit();
                         return true;
                     case R.id.navigation_eclass:
-                        fragmentManager.beginTransaction().hide(active).show(eClassFragment).commit();
-                        active = eClassFragment;
+                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,eClassFragment).commit();
                         return true;
                     case R.id.navigation_clubs:
-                        fragmentManager.beginTransaction().hide(active).show(clubsFragment).commit();
-                        active = clubsFragment;
+                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,clubsFragment).commit();
                         return true;
                     case R.id.navigation_profile:
-                        fragmentManager.beginTransaction().hide(active).show(profileFragment).commit();
-                        active = profileFragment;
+                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,profileFragment).commit();
                         return true;
                 }
             return false;

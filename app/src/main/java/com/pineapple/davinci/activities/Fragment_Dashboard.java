@@ -82,12 +82,8 @@ public class Fragment_Dashboard extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_dashboard, container, false);
-    }
 
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
 
         TextView userID = view.findViewById(R.id.userID);
         TextView name = view.findViewById(R.id.name);
@@ -102,12 +98,18 @@ public class Fragment_Dashboard extends Fragment {
         signout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("sign i=out", "Onclick: attempting to sign out user");
+                Log.d("sign out", "Onclick: attempting to sign out user");
                 FirebaseAuth.getInstance().signOut();
                 //Auth.GoogleSignInApi.signOut(Singleton.getInstance().getGapiClient());
                 Singleton.getInstance().getGsiClient().signOut();
             }
         });
+        return view;
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
     }
 
 
