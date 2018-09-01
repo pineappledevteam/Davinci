@@ -32,7 +32,6 @@ public class Student {
     public String getFirstName() {
         return firstName;
     }
-
     void setFirstName(String firstName) { //only writable by DB access
         this.firstName = firstName;
     }
@@ -40,7 +39,6 @@ public class Student {
     public String getLastName() {
         return lastName;
     }
-
     void setLastName(String lastName) { //only writable by DB access
         this.lastName = lastName;
     }
@@ -48,33 +46,26 @@ public class Student {
     public String getMyUserID() {
         return myUserID;
     }
-
     void setMyUserID(String myUserID) { //only writable by DB access
         this.myUserID = myUserID;
     }
 
     public int getAge() { return age; }
-
     void setAge(int age) { this.age = age; }
 
     public int getGrade() { return grade; }
-
     void setGrade(int grade) { this.grade = grade; }
 
     public String getStudentID() { return studentID; }
-
     void setStudentID(String studentID) { this.studentID = studentID; }
 
     public String getDescription() { return description; }
-
     void setDescription(String description) { this.description = description; }
 
     public String getRelationshipStatus() { return relationshipStatus; }
-
     void setRelationshipStatus(String relationshipStatus) { this.relationshipStatus = relationshipStatus; }
 
     public ArrayList<Club> getClubList() { return clubList; }
-
     public void setClubList(ArrayList<Club> clubList) { this.clubList = clubList; }
 
     HashMap<String, Object> getDataMapForDB() {
