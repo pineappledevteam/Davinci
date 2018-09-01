@@ -61,10 +61,12 @@ public class Student_Delegate {
 
     public static void getStudentFromFirebase(final String userID, final MyCallback<Student> callback) {
         DatabaseReference dbRef = Singleton.getInstance().getDatabaseRef();
+        Log.d("student delegate","get student");
         final DatabaseReference studentDatabase = dbRef.child(Constants.DB_Tables_Students);
         final ValueEventListener checkForStudent = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Log.d("stud delegate","accessing database");
                 if (snapshot.hasChild(userID)) {
                     Log.d("retrieve student","child exists");
                     studentDatabase.child(userID).addListenerForSingleValueEvent(new ValueEventListener() {

@@ -109,7 +109,7 @@ public class Activity_Login extends AppCompatActivity {
 //                    }
 //                });
 
-        updateUI(fireUser);
+        //updateUI(fireUser);
     }
 
     @Override

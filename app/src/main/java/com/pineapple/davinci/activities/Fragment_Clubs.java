@@ -1,6 +1,7 @@
 package com.pineapple.davinci.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -9,8 +10,19 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.pineapple.davinci.R;
+import com.pineapple.davinci.clubutils.Club;
+import com.pineapple.davinci.clubutils.ClubsDashboard_ImageAdapter;
+import com.pineapple.davinci.resources.Constants;
+import com.pineapple.davinci.resources.Singleton;
+import com.pineapple.davinci.studentutils.Student;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +41,9 @@ public class Fragment_Clubs extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    ArrayList<Club> studentClubs;
+    ImageButton settings;
 
     private OnFragmentInteractionListener mListener;
 
@@ -74,6 +89,29 @@ public class Fragment_Clubs extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //TODO: THIS IS ONCREATE FOR FRAGMENTS
+        Student student = Singleton.getInstance().getCurrStudent();
+        studentClubs = student.getClubList();
+
+        GridView gridview = view.findViewById(R.id.gridview);
+        gridview.setAdapter(new ClubsDashboard_ImageAdapter(getActivity(), studentClubs, this.getResources().getDisplayMetrics().density));
+        //setGridViewHeightBasedOnChildren(gridview, gridview.getNumColumns());
+
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View v,
+                                    int position, long id) {
+                Toast.makeText(getActivity(), "" + position,
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        settings = view.findViewById(R.id.imageButton3);
+        settings.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Intent startIntent = new Intent(getApplicationContext(), Activity_SignOut.class);
+                //startActivity(startIntent);
+            }
+        });
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -97,7 +135,7 @@ public class Fragment_Clubs extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mListener.updateNavBar(R.id.navigation_clubs);
+        mListener.updateNavBar(Constants.FRAG_CLUBS);
     }
 
     @Override
@@ -117,6 +155,7 @@ public class Fragment_Clubs extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        void updateNavBar(@IdRes int itemId);
+        void updateNavBar(String fragType);
+        void selectClub(String clubName);
     }
 }

@@ -66,9 +66,9 @@ public class Student {
     void setRelationshipStatus(String relationshipStatus) { this.relationshipStatus = relationshipStatus; }
 
     public ArrayList<Club> getClubList() { return clubList; }
-    public void setClubList(ArrayList<Club> clubList) { this.clubList = clubList; }
+    void setClubList(ArrayList<Club> clubList) { this.clubList = clubList; }
 
-    HashMap<String, Object> getDataMapForDB() {
+    public HashMap<String, Object> getDataMapForDB() {
         HashMap<String, Object> data = new HashMap<>();
         //data.put(Constants.DB_Cols_UserID,myUserID);
         data.put(Constants.DB_Cols_FirstName,firstName);
