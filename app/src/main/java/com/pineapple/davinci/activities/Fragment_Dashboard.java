@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -143,7 +144,7 @@ public class Fragment_Dashboard extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((Activity_MainPages)this.getActivity()).bottomNavigationView.setSelectedItemId(R.id.navigation_dashboard);
+        mListener.updateNavBar(R.id.navigation_dashboard);
     }
 
     @Override
@@ -157,7 +158,7 @@ public class Fragment_Dashboard extends Fragment {
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            //mListener.updateNavBar(uri);
         }
     }
 
@@ -189,7 +190,6 @@ public class Fragment_Dashboard extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void updateNavBar(@IdRes int itemId);
     }
 }

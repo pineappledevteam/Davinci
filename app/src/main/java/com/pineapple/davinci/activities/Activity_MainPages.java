@@ -1,24 +1,18 @@
 package com.pineapple.davinci.activities;
 
-import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Toast;
-import android.support.design.widget.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+
 import com.pineapple.davinci.R;
 import com.pineapple.davinci.resources.BottomNavigationViewHelper;
-import com.pineapple.davinci.resources.Singleton;
 
 public class Activity_MainPages extends AppCompatActivity
         implements Fragment_Dashboard.OnFragmentInteractionListener,
@@ -90,7 +84,7 @@ public class Activity_MainPages extends AppCompatActivity
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-        //hi
+    public void updateNavBar(@IdRes int itemId) {
+        bottomNavigationView.setSelectedItemId(itemId);
     }
 }

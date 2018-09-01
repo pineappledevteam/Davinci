@@ -3,6 +3,7 @@ package com.pineapple.davinci.activities;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -78,7 +79,7 @@ public class Fragment_Calendar extends Fragment {
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            //mListener.onFragmentInteraction(uri);
         }
     }
 
@@ -96,7 +97,7 @@ public class Fragment_Calendar extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((Activity_MainPages)this.getActivity()).bottomNavigationView.setSelectedItemId(R.id.navigation_calendar);
+        mListener.updateNavBar(R.id.navigation_calendar);
     }
 
     @Override
@@ -116,7 +117,6 @@ public class Fragment_Calendar extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void updateNavBar(@IdRes int itemId);
     }
 }
