@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.pineapple.davinci.R;
+import com.pineapple.davinci.resources.Constants;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -97,7 +98,7 @@ public class Fragment_Calendar extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mListener.updateNavBar(R.id.navigation_calendar);
+        mListener.updateNavBar(Constants.FRAG_CALENDAR);
     }
 
     @Override
@@ -117,6 +118,6 @@ public class Fragment_Calendar extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        void updateNavBar(@IdRes int itemId);
+        void updateNavBar(String fragType);
     }
 }

@@ -4,36 +4,40 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.pineapple.davinci.R;
+import com.pineapple.davinci.clubutils.Club;
+import com.pineapple.davinci.clubutils.Clubs_Delegate;
 import com.pineapple.davinci.resources.Constants;
+import com.pineapple.davinci.resources.MyCallback;
+import com.pineapple.davinci.resources.MyException;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Fragment_eClass.OnFragmentInteractionListener} interface
+ * {@link Fragment_ClubPage.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Fragment_eClass#newInstance} factory method to
+ * Use the {@link Fragment_ClubPage#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class Fragment_eClass extends Fragment {
+public class Fragment_ClubPage extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private static final String ARG_CLUB_NAME = "clubName";
 
     // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private String clubName;
 
     private OnFragmentInteractionListener mListener;
 
-    public Fragment_eClass() {
+    private Club mClub;
+
+    public Fragment_ClubPage() {
         // Required empty public constructor
     }
 
@@ -41,40 +45,46 @@ public class Fragment_eClass extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Fragment_eClass.
+     * @param clubName club to make fragment for.
+     * @return A new instance of fragment Fragment_ClubPage.
      */
-    // TODO: Rename and change types and number of parameters
-    public static Fragment_eClass newInstance(String param1, String param2) {
-        Fragment_eClass fragment = new Fragment_eClass();
+    public static Fragment_ClubPage newInstance(String clubName) {
+        Fragment_ClubPage fragment = new Fragment_ClubPage();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_CLUB_NAME, clubName);
         fragment.setArguments(args);
         return fragment;
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) { //TODO: no UI init here!!
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            clubName = getArguments().getString(ARG_CLUB_NAME);
+        } else {
+            throw new MyException("invalid club fragment created -- need club");
         }
+        Clubs_Delegate.getClub(clubName, new MyCallback<Club>() {
+            @Override
+            public void accept(Club club) {
+                mClub = club;
+            }
+        });
     }
 
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_e_class, container, false);
+        return inflater.inflate(R.layout.fragment_club_page, container, false);
     }
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //TODO: THIS IS ONCREATE FOR FRAGMENTS
+        TextView textView = view.findViewById(R.id.oofd);
+        textView.setText(clubName);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -98,7 +108,7 @@ public class Fragment_eClass extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mListener.updateNavBar(Constants.FRAG_ECLASS);
+        mListener.updateNavBar(Constants.FRAG_CLUB_PAGE);
     }
 
     @Override

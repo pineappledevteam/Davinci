@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.pineapple.davinci.R;
+import com.pineapple.davinci.resources.Constants;
 import com.pineapple.davinci.resources.Singleton;
 import com.pineapple.davinci.studentutils.Student;
 
@@ -144,7 +145,7 @@ public class Fragment_Dashboard extends Fragment {
     public void onResume() {
         super.onResume();
         Log.d("frag_dashboard","onResume");
-        mListener.updateNavBar(R.id.navigation_dashboard);
+        mListener.updateNavBar(Constants.FRAG_DASHBOARD);
     }
 
     @Override
@@ -190,6 +191,6 @@ public class Fragment_Dashboard extends Fragment {
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        void updateNavBar(@IdRes int itemId);
+        void updateNavBar(String fragType);
     }
 }
