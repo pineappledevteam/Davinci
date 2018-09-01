@@ -109,6 +109,7 @@ public class Fragment_ClubPage extends Fragment {
     public void onResume() {
         super.onResume();
         mListener.updateNavBar(Constants.FRAG_CLUB_PAGE);
+        mListener.selectClub(clubName);
     }
 
     @Override
@@ -129,5 +130,6 @@ public class Fragment_ClubPage extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         void updateNavBar(String fragType);
+        void selectClub(String clubName);
     }
 }

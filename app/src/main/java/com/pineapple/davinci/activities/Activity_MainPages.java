@@ -36,7 +36,7 @@ public class Activity_MainPages extends AppCompatActivity
     Fragment_Calendar calendarFragment;
     Fragment_eClass eClassFragment;
     Fragment_Clubs clubsFragment;
-    HashMap<String,Fragment_ClubPage> clubPageFragmentList;
+    HashMap<String,Fragment_ClubPage> clubPageFragmentList = new HashMap<>();
     String currClub;
     Fragment_Profile profileFragment;
 
@@ -141,6 +141,12 @@ public class Activity_MainPages extends AppCompatActivity
     }
 
     @Override
+    public void goToClub(String clubName) {
+        selectClub(clubName);
+        fragmentManager.beginTransaction().replace(R.id.fragMainContainer, clubsDisplayFragment).show(clubsDisplayFragment).addToBackStack("clubs fragment").commit();
+    }
+
+    @Override
     public void selectClub(String clubName) {
         if (!clubPageFragmentList.keySet().contains(clubName)) {
             Fragment_ClubPage newClubFragment = Fragment_ClubPage.newInstance(clubName);
@@ -149,6 +155,7 @@ public class Activity_MainPages extends AppCompatActivity
         clubsDisplayFragment = clubPageFragmentList.get(clubName);
         currClub = clubName;
     }
+
 
     public void updateNavBar(@IdRes int itemId) {
         bottomNavigationView.getMenu().findItem(itemId).setChecked(true);

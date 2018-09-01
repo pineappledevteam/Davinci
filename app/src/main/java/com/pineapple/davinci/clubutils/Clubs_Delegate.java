@@ -63,13 +63,13 @@ public class Clubs_Delegate {
                 //if(club.getClubColors() != null) {
                 if(false) {
                     Log.d("club color", clubName + " found");
-                    String[] clubColors = club.getClubColors();
-                    int[] colors = {Color.parseColor(clubColors[0]),Color.parseColor(clubColors[1])};
+                    ArrayList<String> clubColors = club.getClubColors();
+                    int[] colors = {Color.parseColor(clubColors.get(0)),Color.parseColor(clubColors.get(1))};
                     callback.accept(colors);
                 } else {
                     Log.d("club color","club error - using default");
                     int[] colors = Constants.defaultClubGradient.clone();
-                    String[] clubColors = new String[2];
+                    ArrayList<String> clubColors = new ArrayList<>();
                     for(int i = 0; i < 2; i++) {
                         int A = (colors[i] >> 24) & 0xff; // or color >>> 24
                         int R = (colors[i] >> 16) & 0xff;
@@ -79,7 +79,7 @@ public class Clubs_Delegate {
                         String r = "" + Integer.toHexString(R);
                         String g = "" + Integer.toHexString(G);
                         String b = "" + Integer.toHexString(B);
-                        clubColors[i] = "#" + a+r+g+b;
+                        clubColors.set(i,"#" + a+r+g+b);
                     }
                     club.setClubColors(clubColors);
                     callback.accept(Constants.defaultClubGradient.clone());

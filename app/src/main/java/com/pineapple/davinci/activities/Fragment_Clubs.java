@@ -101,6 +101,7 @@ public class Fragment_Clubs extends Fragment {
                                     int position, long id) {
                 Toast.makeText(getActivity(), "" + position,
                         Toast.LENGTH_SHORT).show();
+                mListener.goToClub(studentClubs.get(position).getNameString());
             }
         });
 
@@ -156,6 +157,6 @@ public class Fragment_Clubs extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         void updateNavBar(String fragType);
-        void selectClub(String clubName);
+        void goToClub(String clubName);
     }
 }

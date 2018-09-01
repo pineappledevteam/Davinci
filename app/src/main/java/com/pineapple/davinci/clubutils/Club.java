@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class Club {
 
     private String nameString;
-    private String[] clubColors;
+    private ArrayList<String> clubColors;
     private int imageResource;
     private boolean isFavorite = false;
 
@@ -29,8 +29,8 @@ public class Club {
     public String getNameString() { return nameString; }
     void setNameString(String nameString) { this.nameString = nameString; }
 
-    public String[] getClubColors() { return clubColors; }
-    void setClubColors(String[] clubColors) { this.clubColors = clubColors; }
+    public ArrayList<String> getClubColors() { return clubColors; }
+    void setClubColors(ArrayList<String> clubColors) { this.clubColors = clubColors; }
 
     public ArrayList<ClubMember> getMembers() { return members; }
     void setMembers(ArrayList<ClubMember> members) { this.members = members; }
