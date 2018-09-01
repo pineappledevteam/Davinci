@@ -6,9 +6,9 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context="com.pineapple.davinci.activities.Activity_Login"
-    android:background="@drawable/gradient_rectangle"
+    android:background="@drawable/gradient_background"
     >
-    <!--android:background="@drawable/gradient_rectangle" TODO: put back in-->
+    <!--android:background="@drawable/gradient_background" TODO: put back in-->
 
 
 
