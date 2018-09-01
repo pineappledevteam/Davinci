@@ -10,6 +10,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.pineapple.davinci.R;
 import com.pineapple.davinci.resources.BottomNavigationViewHelper;
@@ -30,6 +31,8 @@ public class Activity_MainPages extends AppCompatActivity
 
     final FragmentManager fragmentManager = getSupportFragmentManager();
     Fragment active;
+
+    final boolean[] useTransaction = {false};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,30 +64,39 @@ public class Activity_MainPages extends AppCompatActivity
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch(item.getItemId()) {
-                    case R.id.navigation_dashboard:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,dashboardFragment).addToBackStack("dashboard fragment").commit();
-                        return true;
-                    case R.id.navigation_calendar:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,calendarFragment).addToBackStack("calendar fragment").commit();
-                        return true;
-                    case R.id.navigation_eclass:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,eClassFragment).addToBackStack("eClass fragment").commit();
-                        return true;
-                    case R.id.navigation_clubs:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,clubsFragment).addToBackStack("clubs fragment").commit();
-                        return true;
-                    case R.id.navigation_profile:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer,profileFragment).addToBackStack("profile fragment").commit();
-                        return true;
+                if(useTransaction[0]) {
+                    switch (item.getItemId()) {
+                        case R.id.navigation_dashboard:
+                            fragmentManager.beginTransaction().replace(R.id.fragMainContainer, dashboardFragment).addToBackStack("dashboard fragment").commit();
+                            return true;
+                        case R.id.navigation_calendar:
+                            fragmentManager.beginTransaction().replace(R.id.fragMainContainer, calendarFragment).addToBackStack("calendar fragment").commit();
+                            return true;
+                        case R.id.navigation_eclass:
+                            fragmentManager.beginTransaction().replace(R.id.fragMainContainer, eClassFragment).addToBackStack("eClass fragment").commit();
+                            return true;
+                        case R.id.navigation_clubs:
+                            fragmentManager.beginTransaction().replace(R.id.fragMainContainer, clubsFragment).addToBackStack("clubs fragment").commit();
+                            return true;
+                        case R.id.navigation_profile:
+                            fragmentManager.beginTransaction().replace(R.id.fragMainContainer, profileFragment).addToBackStack("profile fragment").commit();
+                            return true;
+                    }
                 }
             return false;
             }
         });
     }
 
+    public void onClick(View v) {
+        if(v.equals(bottomNavigationView)){
+            useTransaction[0] = true;
+        }
+    }
+
     @Override
     public void updateNavBar(@IdRes int itemId) {
+        useTransaction[0] = false;
         bottomNavigationView.setSelectedItemId(itemId);
     }
 }
