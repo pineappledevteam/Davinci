@@ -84,8 +84,13 @@ public class Fragment_Dashboard extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
 
-        View view = inflater.inflate(R.layout.fragment_dashboard, container, false);
+        return inflater.inflate(R.layout.fragment_dashboard, container, false);
 
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
         TextView userID = view.findViewById(R.id.userID);
         TextView name = view.findViewById(R.id.name);
 
@@ -105,12 +110,6 @@ public class Fragment_Dashboard extends Fragment {
                 Singleton.getInstance().getGsiClient().signOut();
             }
         });
-        return view;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 
 
@@ -144,6 +143,7 @@ public class Fragment_Dashboard extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        Log.d("frag_dashboard","onResume");
         mListener.updateNavBar(R.id.navigation_dashboard);
     }
 

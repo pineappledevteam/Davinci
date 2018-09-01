@@ -58,6 +58,7 @@ public class Activity_StartLogo extends AppCompatActivity {
 
     private void getStarted() {
         Intent intent = new Intent(this, Activity_Login.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(intent);
     }
 

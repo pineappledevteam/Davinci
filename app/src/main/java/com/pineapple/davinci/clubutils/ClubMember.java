@@ -15,8 +15,6 @@ public class ClubMember {
     private final int MANAGER = 2;
 
 
-
-
     public ClubMember() {  }
 
     public ClubMember(String studentUID, Integer rank) {

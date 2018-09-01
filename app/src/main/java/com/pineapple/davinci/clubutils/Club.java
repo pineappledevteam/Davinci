@@ -10,6 +10,8 @@ public class Club {
 
     private String nameString;
     private String[] clubColors;
+    private int imageResource;
+    private boolean isFavorite = false;
 
     private ArrayList<String> sponsors;
     private ArrayList<ClubMember> members;
@@ -41,5 +43,12 @@ public class Club {
     }
     void setSponsors(ArrayList<String> sponsors) {
         this.sponsors = sponsors;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+    void toggleFavorite() {
+        isFavorite = !isFavorite;
     }
 }
