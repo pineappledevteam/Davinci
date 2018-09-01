@@ -31,7 +31,7 @@ public class Activity_MainPages extends AppCompatActivity
     Fragment eClassDisplayFragment;
     Fragment clubsDisplayFragment;
     Fragment profileDisplayFragment;
-
+    Fragment active;
 
     Fragment_Dashboard dashboardFragment;
     Fragment_Calendar calendarFragment;
@@ -69,6 +69,7 @@ public class Activity_MainPages extends AppCompatActivity
         clubsDisplayFragment = clubsFragment;
         profileDisplayFragment = profileFragment;
 
+        active = dashboardDisplayFragment;
 
         fragmentManager.beginTransaction().add(R.id.fragMainContainer, calendarDisplayFragment, "calendar fragment").hide(calendarDisplayFragment).commit();
         fragmentManager.beginTransaction().add(R.id.fragMainContainer, eClassDisplayFragment, "eClass fragment").hide(eClassDisplayFragment).commit();
@@ -89,19 +90,19 @@ public class Activity_MainPages extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_dashboard:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer, dashboardDisplayFragment).show(dashboardDisplayFragment).addToBackStack("dashboard fragment").commit();
+                        fragmentManager.beginTransaction().hide(active).show(dashboardDisplayFragment).addToBackStack("dashboard fragment").commit();
                         return true;
                     case R.id.navigation_calendar:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer, calendarDisplayFragment).show(calendarDisplayFragment).addToBackStack("calendar fragment").commit();
+                        fragmentManager.beginTransaction().hide(active).show(calendarDisplayFragment).addToBackStack("calendar fragment").commit();
                         return true;
                     case R.id.navigation_eclass:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer, eClassDisplayFragment).show(eClassDisplayFragment).addToBackStack("eClass fragment").commit();
+                        fragmentManager.beginTransaction().hide(active).show(eClassDisplayFragment).addToBackStack("eClass fragment").commit();
                         return true;
                     case R.id.navigation_clubs:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer, clubsDisplayFragment).show(clubsDisplayFragment).addToBackStack("clubs fragment").commit();
+                        fragmentManager.beginTransaction().hide(active).show(clubsDisplayFragment).addToBackStack("clubs fragment").commit();
                         return true;
                     case R.id.navigation_profile:
-                        fragmentManager.beginTransaction().replace(R.id.fragMainContainer, profileDisplayFragment).show(profileDisplayFragment).addToBackStack("profile fragment").commit();
+                        fragmentManager.beginTransaction().hide(active).show(profileDisplayFragment).addToBackStack("profile fragment").commit();
                         return true;
                 }
                 return false;
@@ -142,7 +143,7 @@ public class Activity_MainPages extends AppCompatActivity
     @Override
     public void goToClub(String clubName) {
         selectClub(clubName);
-        fragmentManager.beginTransaction().replace(R.id.fragMainContainer, clubsDisplayFragment).show(clubsDisplayFragment).addToBackStack("clubs fragment").commit();
+        fragmentManager.beginTransaction().add(R.id.fragMainContainer, clubsDisplayFragment,"clubPage: "+clubName).hide(active).show(clubsDisplayFragment).addToBackStack("clubs fragment").commit();
     }
 
     @Override
