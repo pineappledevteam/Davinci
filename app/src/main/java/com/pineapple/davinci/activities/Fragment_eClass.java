@@ -96,7 +96,7 @@ public class Fragment_eClass extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((Activity_MainPages)this.getActivity()).bottomNavigationView.setSelectedItemId(R.id.navigation_eclass);
+        //((Activity_MainPages)this.getActivity()).bottomNavigationView.setSelectedItemId(R.id.navigation_eclass);
     }
 
     @Override

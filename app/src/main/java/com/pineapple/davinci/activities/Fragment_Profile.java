@@ -96,7 +96,7 @@ public class Fragment_Profile extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        ((Activity_MainPages)this.getActivity()).bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
+        //((Activity_MainPages)this.getActivity()).bottomNavigationView.setSelectedItemId(R.id.navigation_profile);
     }
 
     @Override
