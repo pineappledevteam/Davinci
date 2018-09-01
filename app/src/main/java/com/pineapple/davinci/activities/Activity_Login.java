@@ -151,7 +151,7 @@ public class Activity_Login extends AppCompatActivity {
                         Intent toDashBoardIntent = new Intent(getApplicationContext(),Activity_MainPages.class);
                         Singleton.getInstance().setSignedInSuccess(true);
                         startActivity(toDashBoardIntent);
-                        finish();
+                        //finish();
                     } else {
                         Log.w("login","logged - need profile");
                         Intent createProfileIntent = new Intent(getApplicationContext(),Activity_CreateProfile.class);
