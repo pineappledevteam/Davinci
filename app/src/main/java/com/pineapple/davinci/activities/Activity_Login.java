@@ -68,20 +68,24 @@ public class Activity_Login extends AppCompatActivity {
                 .requestEmail()
                 .build();
 
-        // Build a GoogleSignInClient with the options specified by gso.
-        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
-        Singleton.getInstance().setGsiClient(mGoogleSignInClient);
 
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this /* FragmentActivity */, new GoogleApiClient.OnConnectionFailedListener() {
-                    @Override
-                    public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
-                        Log.d("conn fail", connectionResult.getErrorMessage());
-                    }
-                } /* OnConnectionFailedListener */)
-                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
-                .build();
-        Singleton.getInstance().setGapiClient(mGoogleApiClient);
+        if(!Singleton.getInstance().isSignedInSuccess()) {
+            Log.d("activity login","went back to login");
+            // Build a GoogleSignInClient with the options specified by gso.
+            mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+            Singleton.getInstance().setGsiClient(mGoogleSignInClient);
+
+            mGoogleApiClient = new GoogleApiClient.Builder(this)
+                    .enableAutoManage(this /* FragmentActivity */, new GoogleApiClient.OnConnectionFailedListener() {
+                        @Override
+                        public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
+                            Log.d("conn fail", connectionResult.getErrorMessage());
+                        }
+                    } /* OnConnectionFailedListener */)
+                    .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                    .build();
+            Singleton.getInstance().setGapiClient(mGoogleApiClient);
+        }
 
         // Set the dimensions of the sign-in button.
         signInButton = findViewById(R.id.sign_in_button);
@@ -147,6 +151,7 @@ public class Activity_Login extends AppCompatActivity {
                         Intent toDashBoardIntent = new Intent(getApplicationContext(),Activity_MainPages.class);
                         Singleton.getInstance().setSignedInSuccess(true);
                         startActivity(toDashBoardIntent);
+                        finish();
                     } else {
                         Log.w("login","logged - need profile");
                         Intent createProfileIntent = new Intent(getApplicationContext(),Activity_CreateProfile.class);

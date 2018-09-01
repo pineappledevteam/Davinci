@@ -108,8 +108,8 @@ public class Fragment_ClubPage extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mListener.updateNavBar(Constants.FRAG_CLUB_PAGE);
         mListener.selectClub(clubName);
+        mListener.updateNavBar(Constants.FRAG_CLUB_PAGE);
     }
 
     @Override

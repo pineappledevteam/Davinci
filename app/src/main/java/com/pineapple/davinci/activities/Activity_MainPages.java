@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -41,7 +42,6 @@ public class Activity_MainPages extends AppCompatActivity
     Fragment_Profile profileFragment;
 
     final FragmentManager fragmentManager = getSupportFragmentManager();
-    Fragment active;
 
 
     @Override
@@ -75,7 +75,6 @@ public class Activity_MainPages extends AppCompatActivity
         fragmentManager.beginTransaction().add(R.id.fragMainContainer, clubsDisplayFragment, "clubs fragment").hide(clubsDisplayFragment).commit();
         fragmentManager.beginTransaction().add(R.id.fragMainContainer, profileDisplayFragment, "profile fragment").hide(profileDisplayFragment).commit();
         fragmentManager.beginTransaction().add(R.id.fragMainContainer, dashboardDisplayFragment, "dashboard fragment").show(dashboardDisplayFragment).commit();
-        active = dashboardDisplayFragment;
 
 
 
@@ -148,6 +147,7 @@ public class Activity_MainPages extends AppCompatActivity
 
     @Override
     public void selectClub(String clubName) {
+        Log.d("select club",clubPageFragmentList.size()+"");
         if (!clubPageFragmentList.keySet().contains(clubName)) {
             Fragment_ClubPage newClubFragment = Fragment_ClubPage.newInstance(clubName);
             clubPageFragmentList.put(clubName, newClubFragment);
