@@ -60,6 +60,30 @@
                     android:textAppearance="@style/header_clubs"
                     tools:layout_editor_absoluteY="38dp" />
 
+                <ImageButton
+                    android:id="@+id/ellipse"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginStart="100dp"
+                    android:layout_alignTop="@+id/clubs"
+                    android:layout_marginTop="5dp"
+                    android:layout_alignLeft="@+id/clubs"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@drawable/button_circlewhite"
+                    app:srcCompat="@drawable/button_circlewhite" />
+
+                <ImageView
+                    android:id="@+id/edit"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_alignStart="@+id/ellipse"
+                    android:layout_alignTop="@+id/ellipse"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginLeft="6dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@drawable/ic_baseline_edit_24px"
+                    app:srcCompat="@drawable/ic_baseline_edit_24px" />
+
                 <GridView xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/gridview"
                     android:layout_width="341dp"

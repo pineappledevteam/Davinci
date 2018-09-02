@@ -286,7 +286,7 @@
                         android:elevation="15dp"
                         android:text = "@string/plus"
                         android:textSize="18sp"
-                        android:background="@drawable/add_club_button"
+                        android:background="@drawable/createprofile_button_addclub"
                         android:textColor="@android:color/white"
                         />
 

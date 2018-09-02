@@ -79,7 +79,7 @@ public class Clubs_Delegate {
                         String r = "" + Integer.toHexString(R);
                         String g = "" + Integer.toHexString(G);
                         String b = "" + Integer.toHexString(B);
-                        clubColors.set(i,"#" + a+r+g+b);
+                        clubColors.add("#" + a+r+g+b);
                     }
                     club.setClubColors(clubColors);
                     callback.accept(Constants.defaultClubGradient.clone());

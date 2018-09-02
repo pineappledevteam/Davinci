@@ -2,6 +2,7 @@ package com.pineapple.davinci.activities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
@@ -13,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.pineapple.davinci.R;
@@ -41,9 +43,12 @@ public class Fragment_Clubs extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private float mPixelDensity;
 
     ArrayList<Club> studentClubs;
     ImageButton settings;
+    ImageButton edit_ellipse;
+    ImageView edit;
 
     private OnFragmentInteractionListener mListener;
 
@@ -76,6 +81,7 @@ public class Fragment_Clubs extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        mPixelDensity = this.getResources().getDisplayMetrics().density;
     }
 
     @Override
@@ -113,6 +119,19 @@ public class Fragment_Clubs extends Fragment {
                 //startActivity(startIntent);
             }
         });
+
+        edit_ellipse = view.findViewById(R.id.ellipse);
+        //edit.setElevation((int)(11*mPixelDensity));
+        //edit.setShadowLayer((int)(11*mPixelDensity),(int)(1*mPixelDensity),(int)(1*mPixelDensity), Color.parseColor("#15000000"));
+        edit_ellipse.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        edit = view.findViewById(R.id.edit);
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
