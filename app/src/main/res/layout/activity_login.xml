@@ -8,7 +8,6 @@
     tools:context="com.pineapple.davinci.activities.Activity_Login"
     android:background="@drawable/gradient_background"
     >
-    <!--android:background="@drawable/gradient_background" TODO: put back in-->
 
 
 

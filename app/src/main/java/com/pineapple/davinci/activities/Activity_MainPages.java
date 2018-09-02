@@ -15,6 +15,7 @@ import com.pineapple.davinci.R;
 import com.pineapple.davinci.resources.BottomNavigationViewHelper;
 import com.pineapple.davinci.resources.Constants;
 
+import java.util.Calendar;
 import java.util.HashMap;
 
 public class Activity_MainPages extends AppCompatActivity
@@ -91,18 +92,23 @@ public class Activity_MainPages extends AppCompatActivity
                 switch (item.getItemId()) {
                     case R.id.navigation_dashboard:
                         fragmentManager.beginTransaction().hide(active).show(dashboardDisplayFragment).addToBackStack("dashboard fragment").commit();
+                        active = dashboardDisplayFragment;
                         return true;
                     case R.id.navigation_calendar:
                         fragmentManager.beginTransaction().hide(active).show(calendarDisplayFragment).addToBackStack("calendar fragment").commit();
+                        active = calendarDisplayFragment;
                         return true;
                     case R.id.navigation_eclass:
                         fragmentManager.beginTransaction().hide(active).show(eClassDisplayFragment).addToBackStack("eClass fragment").commit();
+                        active = eClassDisplayFragment;
                         return true;
                     case R.id.navigation_clubs:
                         fragmentManager.beginTransaction().hide(active).show(clubsDisplayFragment).addToBackStack("clubs fragment").commit();
+                        active = clubsDisplayFragment;
                         return true;
                     case R.id.navigation_profile:
                         fragmentManager.beginTransaction().hide(active).show(profileDisplayFragment).addToBackStack("profile fragment").commit();
+                        active = profileDisplayFragment;
                         return true;
                 }
                 return false;
