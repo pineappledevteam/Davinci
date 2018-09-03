@@ -52,7 +52,7 @@
 
                 <TextView
                     android:id="@+id/clubs"
-                    android:layout_width="175dp"
+                    android:layout_width="80dp"
                     android:layout_height="40dp"
                     android:layout_alignStart="@+id/imageView6"
                     android:layout_below="@+id/imageView6"
@@ -61,28 +61,17 @@
                     tools:layout_editor_absoluteY="38dp" />
 
                 <ImageButton
-                    android:id="@+id/ellipse"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_marginStart="100dp"
-                    android:layout_alignTop="@+id/clubs"
-                    android:layout_marginTop="5dp"
-                    android:layout_alignLeft="@+id/clubs"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="@drawable/button_circlewhite"
-                    app:srcCompat="@drawable/button_circlewhite" />
-
-                <ImageView
                     android:id="@+id/edit"
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_alignStart="@+id/ellipse"
-                    android:layout_alignTop="@+id/ellipse"
-                    android:layout_marginTop="6dp"
-                    android:layout_marginLeft="6dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@+id/clubs"
+                    android:layout_marginStart="6dp"
+                    android:layout_alignTop="@+id/clubs"
+                    android:layout_marginTop="10dp"
+                    android:tint="@color/colorPrimaryDark"
                     android:background="@android:color/transparent"
-                    android:contentDescription="@drawable/ic_baseline_edit_24px"
-                    app:srcCompat="@drawable/ic_baseline_edit_24px" />
+                    android:contentDescription="@drawable/icon_edit"
+                    app:srcCompat="@drawable/icon_edit" />
 
                 <GridView xmlns:android="http://schemas.android.com/apk/res/android"
                     android:id="@+id/gridview"

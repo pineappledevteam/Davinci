@@ -47,8 +47,7 @@ public class Fragment_Clubs extends Fragment {
 
     ArrayList<Club> studentClubs;
     ImageButton settings;
-    ImageButton edit_ellipse;
-    ImageView edit;
+    ImageButton edit;
 
     private OnFragmentInteractionListener mListener;
 
@@ -105,7 +104,7 @@ public class Fragment_Clubs extends Fragment {
         gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                Toast.makeText(getActivity(), "" + position,
+                Toast.makeText(getActivity(), "" + studentClubs.get(position).getNameString(),
                         Toast.LENGTH_SHORT).show();
                 mListener.goToClub(studentClubs.get(position).getNameString());
             }
@@ -120,17 +119,15 @@ public class Fragment_Clubs extends Fragment {
             }
         });
 
-        edit_ellipse = view.findViewById(R.id.ellipse);
+        edit = view.findViewById(R.id.edit);
         //edit.setElevation((int)(11*mPixelDensity));
         //edit.setShadowLayer((int)(11*mPixelDensity),(int)(1*mPixelDensity),(int)(1*mPixelDensity), Color.parseColor("#15000000"));
-        edit_ellipse.setOnClickListener(new View.OnClickListener() {
+        edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
             }
         });
-
-        edit = view.findViewById(R.id.edit);
 
     }
 
