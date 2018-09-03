@@ -64,13 +64,13 @@
                     android:id="@+id/edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/clubs"
-                    android:layout_marginStart="6dp"
                     android:layout_alignTop="@+id/clubs"
+                    android:layout_marginStart="6dp"
                     android:layout_marginTop="10dp"
-                    android:tint="@color/colorPrimaryDark"
+                    android:layout_toRightOf="@+id/clubs"
                     android:background="@android:color/transparent"
                     android:contentDescription="@drawable/icon_edit"
+                    android:tint="@color/colorPrimaryDark"
                     app:srcCompat="@drawable/icon_edit" />
 
                 <GridView xmlns:android="http://schemas.android.com/apk/res/android"
