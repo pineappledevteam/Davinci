@@ -108,7 +108,7 @@ public class Fragment_ClubPage extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        mListener.selectClub(clubName);
+        mListener.selectClub(clubName, this);
         mListener.updateNavBar(Constants.FRAG_CLUB_PAGE);
     }
 
@@ -130,6 +130,6 @@ public class Fragment_ClubPage extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         void updateNavBar(String fragType);
-        void selectClub(String clubName);
+        void selectClub(String clubName, Fragment_ClubPage fragment);
     }
 }

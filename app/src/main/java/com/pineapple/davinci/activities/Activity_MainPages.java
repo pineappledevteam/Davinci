@@ -1,11 +1,13 @@
 package com.pineapple.davinci.activities;
 
+import android.app.ActivityManager;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -17,6 +19,7 @@ import com.pineapple.davinci.resources.Constants;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.List;
 
 public class Activity_MainPages extends AppCompatActivity
         implements Fragment_Dashboard.OnFragmentInteractionListener,
@@ -118,6 +121,14 @@ public class Activity_MainPages extends AppCompatActivity
 
     @Override
     public void updateNavBar(String fragType) {
+        int numActivities = fragmentManager.getBackStackEntryCount();
+        StringBuilder toPrint = new StringBuilder("Fragment stack: ");
+        for(int i = 0; i < numActivities; i++) {
+            FragmentManager.BackStackEntry backStackEntry = fragmentManager.getBackStackEntryAt(i);
+            toPrint.append(backStackEntry.getName()).append(", ");
+        }
+        toPrint = new StringBuilder(toPrint.substring(0, toPrint.lastIndexOf(",")));
+        Log.d("fragment stack", toPrint.toString());
         switch (fragType) {
             case Constants.FRAG_DASHBOARD:
                 dashboardDisplayFragment = dashboardFragment;
@@ -148,19 +159,27 @@ public class Activity_MainPages extends AppCompatActivity
 
     @Override
     public void goToClub(String clubName) {
-        selectClub(clubName);
-        fragmentManager.beginTransaction().add(R.id.fragMainContainer, clubsDisplayFragment,"clubPage: "+clubName).hide(active).show(clubsDisplayFragment).addToBackStack("clubs fragment").commit();
-    }
-
-    @Override
-    public void selectClub(String clubName) {
-        Log.d("select club",clubPageFragmentList.size()+"");
+        FragmentTransaction ft = fragmentManager.beginTransaction().hide(active);
         if (!clubPageFragmentList.keySet().contains(clubName)) {
             Fragment_ClubPage newClubFragment = Fragment_ClubPage.newInstance(clubName);
             clubPageFragmentList.put(clubName, newClubFragment);
+            clubsDisplayFragment = newClubFragment;
+            ft.add(R.id.fragMainContainer, clubsDisplayFragment,"clubPage: "+clubName);
+        } else {
+            clubsDisplayFragment = clubPageFragmentList.get(clubName);
         }
-        clubsDisplayFragment = clubPageFragmentList.get(clubName);
         currClub = clubName;
+        ft.show(clubsDisplayFragment).addToBackStack("clubs fragment: "+clubName).commit();
+        active = clubsDisplayFragment;
+    }
+
+    @Override
+    public void selectClub(String clubName, Fragment_ClubPage fragment) {
+        Log.d("select club",clubPageFragmentList.size()+"");
+//        if (!clubPageFragmentList.keySet().contains(clubName)) {
+//            clubPageFragmentList.put(clubName, fragment);
+//        }
+//        currClub = clubName;
     }
 
 
