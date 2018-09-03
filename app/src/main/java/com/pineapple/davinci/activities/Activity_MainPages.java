@@ -127,7 +127,10 @@ public class Activity_MainPages extends AppCompatActivity
             FragmentManager.BackStackEntry backStackEntry = fragmentManager.getBackStackEntryAt(i);
             toPrint.append(backStackEntry.getName()).append(", ");
         }
-        toPrint = new StringBuilder(toPrint.substring(0, toPrint.lastIndexOf(",")));
+        if(toPrint.toString().contains(","))
+            toPrint = new StringBuilder(toPrint.substring(0, toPrint.lastIndexOf(",")));
+        else
+            toPrint = new StringBuilder("Fragment stack: no activities");
         Log.d("fragment stack", toPrint.toString());
         switch (fragType) {
             case Constants.FRAG_DASHBOARD:
