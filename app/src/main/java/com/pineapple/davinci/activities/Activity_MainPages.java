@@ -204,6 +204,6 @@ public class Activity_MainPages extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-
+        super.onBackPressed();
     }
 }
