@@ -29,7 +29,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
-                    android:id="@+id/imageView6"
+                    android:id="@+id/logo"
                     android:layout_width="62dp"
                     android:layout_height="38dp"
                     android:layout_alignParentStart="true"
@@ -55,8 +55,8 @@
                     android:id="@+id/clubs"
                     android:layout_width="80dp"
                     android:layout_height="40dp"
-                    android:layout_alignStart="@+id/imageView6"
-                    android:layout_below="@+id/imageView6"
+                    android:layout_alignStart="@+id/logo"
+                    android:layout_below="@+id/logo"
                     android:text="@string/clubs"
                     android:textAppearance="@style/header"
                     tools:layout_editor_absoluteY="38dp" />
@@ -65,13 +65,13 @@
                     android:id="@+id/edit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@+id/clubs"
-                    android:layout_marginStart="6dp"
                     android:layout_alignTop="@+id/clubs"
+                    android:layout_marginStart="6dp"
                     android:layout_marginTop="10dp"
-                    android:tint="@color/colorPrimaryDark"
+                    android:layout_toRightOf="@+id/clubs"
                     android:background="@android:color/transparent"
                     android:contentDescription="@drawable/icon_edit"
+                    android:tint="@color/colorPrimaryDark"
                     app:srcCompat="@drawable/icon_edit" />
 
                 <GridView xmlns:android="http://schemas.android.com/apk/res/android"

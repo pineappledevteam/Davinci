@@ -132,6 +132,7 @@ public class Activity_MainPages extends AppCompatActivity
         else
             toPrint = new StringBuilder("no activities");
         Log.d("fragment stack", toPrint.toString());
+
         switch (fragType) {
             case Constants.FRAG_DASHBOARD:
                 dashboardDisplayFragment = dashboardFragment;

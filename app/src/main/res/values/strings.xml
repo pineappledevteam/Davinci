@@ -18,4 +18,24 @@
     <string name="calendar">calendar</string>
     <string name="eclass">eclass</string>
     <string name="profile">profile</string>
+    <!--Profile Defaults-->
+    <string name="logo_desc">GSMSTLogo</string>
+    <string name="edit_desc">EDIT</string>
+    <string name="profile_title">Profile</string>
+    <string name="default_name">John Doe</string>
+    <string name="default_firstName">John</string>
+    <string name="default_lastName">Doe</string>
+    <string name="default_numAchievements">0</string>
+    <string name="default_followers">0</string>
+    <string name="default_grade">12</string>
+    <string name="default_email">john.doe@gsmst.org</string>
+    <string name="default_phone">123-456-7899</string>
+    <string name="fill">Lorem ipsum dolor sit amet, fabellas assentior cum an, ut his enim utinam minimum, has cu illud harum. Novum intellegat et quo, ut mel odio simul volutpat. Lorem ipsum dolor sit amet, fabellas assentior cum an, ut his enim utinam minimum, has cu illud harum. Novum intellegat et quo, ut mel odio simul volutpat.Lorem ipsum dolor sit amet, fabellas assentior cum an, ut his enim utinam minimum, has cu illud harum. Novum intellegat et quo, ut mel odio simul volutpat.</string>
+    <string name="achievements">Achievements</string>
+    <string name="followers">Followers</string>
+    <string name="description">Description</string>
+    <string name="interests">Interests</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="profile_picture_desc">Profile Picture</string>
+    <string name="first_name">First Name</string>
 </resources>

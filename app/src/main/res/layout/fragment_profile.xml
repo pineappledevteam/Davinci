@@ -1,16 +1,266 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
     tools:context=".activities.Fragment_Profile"
-    android:id="@+id/fragProfile">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    android:id="@+id/fragProfile"
+    android:layout_marginBottom="@dimen/navBarHeight">
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="PROFILE FRAGMENT" />
+
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:id="@+id/header"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                >
+
+                <ImageButton
+                    android:id="@+id/imgBtn_gsmstLogo"
+                    android:background="#FFFFFF"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="6dp"
+                    android:adjustViewBounds="true"
+                    android:maxHeight="38dp"
+                    android:maxWidth="62dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/gsmstinsignia" />
+
+                <ImageButton
+                    android:id="@+id/imgBtn_settings"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignBottom="@+id/imgBtn_gsmstLogo"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="20dp"
+                    android:background="#FFFFFF"
+                    android:elevation="0dp"
+                    app:srcCompat="@drawable/icon_settings" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/main"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="20dp"
+                android:layout_marginStart="20dp"
+                android:background="#FFFFFF">
+
+                <ImageButton
+                    android:id="@+id/imgBtn_editProfile"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_centerHorizontal="false"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toEndOf="@+id/txt_profilePageTitle"
+                    android:adjustViewBounds="false"
+                    android:background="@drawable/icon_edit"
+                    android:contentDescription="@string/edit_desc" />
+
+                <TextView
+                    android:id="@+id/txt_profilePageTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:text="@string/profile_title"
+                    android:textAppearance="@style/profileTitleText"
+                    android:textSize="30sp"
+                    android:textStyle="bold" />
+
+                <ImageButton
+                    android:id="@+id/imgBtn_profilePicEdit"
+                    android:layout_width="115.02dp"
+                    android:layout_height="138.49dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginTop="54.51dp"
+                    app:srcCompat="@drawable/default_profile_pic" />
+
+                <TextView
+                    android:id="@+id/txt_profileName"
+                    android:layout_width="182dp"
+                    android:layout_height="40dp"
+                    android:layout_alignEnd="@+id/txt_desc"
+                    android:layout_alignTop="@+id/imgBtn_profilePicEdit"
+                    android:layout_marginEnd="19dp"
+                    android:text="@string/default_name"
+                    android:textAppearance="@style/profileName" />
+                <!--Achievements-->
+                <TextView
+                    android:id="@+id/txt_numAchievements"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/txt_desc"
+                    android:layout_below="@+id/txt_profileName"
+                    android:gravity="center_horizontal"
+                    android:text="@string/default_numAchievements"
+                    android:textAppearance="@style/profileNums" />
+
+                <TextView
+                    android:id="@+id/achievementsText_TextView"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/txt_numAchievements"
+                    android:layout_below="@+id/txt_numAchievements"
+                    android:layout_centerInParent="@+id/txt_numAchievements"
+                    android:text="Trophies"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/profileDataText" />
+                <!--Followers-->
+                <TextView
+                    android:id="@+id/txt_numFollowers"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/txt_numGrade"
+                    android:layout_alignBottom="@+id/txt_numGrade"
+                    android:layout_toEndOf="@+id/txt_numGrade"
+                    android:gravity="center_horizontal"
+                    android:text="@string/default_followers"
+                    android:textAppearance="@style/profileNums" />
+
+                <TextView
+                    android:id="@+id/followersText_TextView"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/achievementsText_TextView"
+                    android:layout_alignBottom="@+id/achievementsText_TextView"
+                    android:layout_alignEnd="@+id/txt_profileName"
+                    android:layout_centerInParent="@+id/txt_numAchievements"
+                    android:layout_marginEnd="48dp"
+                    android:gravity="center_horizontal"
+                    android:text="Clubs"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/profileDataText" />
+                <!--Grade-->
+                <TextView
+                    android:id="@+id/txt_numGrade"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/txt_profileName"
+                    android:layout_below="@+id/txt_profileName"
+                    android:layout_toStartOf="@+id/followersText_TextView"
+                    android:gravity="center_horizontal"
+                    android:text="@string/default_grade"
+                    android:textAppearance="@style/profileNums" />
+
+                <TextView
+                    android:id="@+id/gradeText_TextView"
+                    android:layout_width="40dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/txt_numGrade"
+                    android:layout_below="@+id/txt_numGrade"
+                    android:layout_centerInParent="@+id/txt_numAchievements"
+                    android:layout_toStartOf="@+id/followersText_TextView"
+                    android:gravity="center_horizontal"
+                    android:text="@string/grade"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/profileDataText" />
+
+                <Button
+                    android:id="@+id/btn_email"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/imgBtn_profilePicEdit"
+                    android:layout_marginStart="10dp"
+                    android:layout_toEndOf="@+id/imgBtn_editProfile"
+                    android:background="@drawable/rounded_gradient_background"
+                    android:elevation="10dp"
+                    android:paddingBottom="0dp"
+                    android:paddingEnd="5dp"
+                    android:paddingStart="5dp"
+                    android:radius="20dp"
+                    android:text="@string/default_email"
+                    android:textAppearance="@style/email_phone"
+                    android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/btn_phoneNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:layout_alignBottom="@+id/imgBtn_profilePicEdit"
+                    android:layout_alignEnd="@+id/achievementsText_TextView"
+                    android:background="@drawable/rounded_gradient_background"
+                    android:text="@string/default_phone"
+                    android:textAppearance="@style/email_phone"
+                    android:textColor="@android:color/white"
+                    android:visibility="visible" />
+                <!-- Description/*.xml -->
+                <TextView
+                    android:id="@+id/txt_descTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentTop="true"
+
+                    android:layout_marginTop="209dp"
+                    android:text="@string/description"
+                    android:textAppearance="@style/sectionHeaders" />
+
+                <TextView
+                    android:id="@+id/txt_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_descTitle"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/fill"
+                    android:textAppearance="@style/sectionText" />
+                <!-- Clubs/*.xml -->
+                <TextView
+                    android:id="@+id/txt_clubsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/txt_desc"
+                    android:layout_below="@+id/txt_desc"
+                    android:text="@string/clubs"
+                    android:textAppearance="@style/sectionHeaders" />
+
+                <TextView
+                    android:id="@+id/txt_clubs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_clubsTitle"
+                    android:layout_centerHorizontal="true"
+                    android:text="@string/fill"
+                    android:textAppearance="@style/sectionText" />
+                <!-- Interests/*.xml -->
+                <TextView
+                    android:id="@+id/txt_interestsTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/txt_clubs"
+                    android:layout_below="@+id/txt_clubs"
+                    android:text="@string/interests"
+                    android:textAppearance="@style/sectionHeaders" />
+
+                <TextView
+                    android:id="@+id/txt_interests"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txt_interestsTitle"
+                    android:layout_centerHorizontal="true"
+
+                    android:text="@string/fill"
+                    android:textAppearance="@style/sectionText" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
