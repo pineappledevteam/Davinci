@@ -121,6 +121,7 @@ public class Activity_MainPages extends AppCompatActivity
 
     @Override
     public void updateNavBar(String fragType) {
+        compareActive(active,fragType);
         int numActivities = fragmentManager.getBackStackEntryCount();
         StringBuilder toPrint = new StringBuilder("Fragment stack: ");
         for(int i = 0; i < numActivities; i++) {
@@ -135,29 +136,40 @@ public class Activity_MainPages extends AppCompatActivity
         switch (fragType) {
             case Constants.FRAG_DASHBOARD:
                 dashboardDisplayFragment = dashboardFragment;
+                active = dashboardDisplayFragment;
                 updateNavBar(R.id.navigation_dashboard);
                 break;
             case Constants.FRAG_CALENDAR:
                 calendarDisplayFragment = calendarFragment;
+                active = calendarDisplayFragment;
                 updateNavBar(R.id.navigation_calendar);
                 break;
             case Constants.FRAG_ECLASS:
                 eClassDisplayFragment = eClassFragment;
+                active = eClassDisplayFragment;
                 updateNavBar(R.id.navigation_eclass);
                 break;
             case Constants.FRAG_CLUB_PAGE:
                 clubsDisplayFragment = clubPageFragmentList.get(currClub);
+                active = clubsDisplayFragment;
                 updateNavBar(R.id.navigation_clubs);
                 break;
             case Constants.FRAG_CLUBS:
                 clubsDisplayFragment = clubsFragment;
+                active = clubsDisplayFragment;
                 updateNavBar(R.id.navigation_clubs);
                 break;
             case Constants.FRAG_PROFILE:
                 profileDisplayFragment = profileFragment;
+                active = profileDisplayFragment;
                 updateNavBar(R.id.navigation_profile);
                 break;
         }
+    }
+
+    private void compareActive(Fragment active, String fragType) {
+        if(!active.getClass().getName().equals(fragType))
+            fragmentManager.beginTransaction().hide(active).commit();
     }
 
     @Override
@@ -188,5 +200,10 @@ public class Activity_MainPages extends AppCompatActivity
 
     public void updateNavBar(@IdRes int itemId) {
         bottomNavigationView.getMenu().findItem(itemId).setChecked(true);
+    }
+
+    @Override
+    public void onBackPressed() {
+
     }
 }

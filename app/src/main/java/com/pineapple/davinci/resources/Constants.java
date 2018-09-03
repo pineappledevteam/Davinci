@@ -34,12 +34,12 @@ public class Constants {
 
     public static final int[] defaultClubGradient = {Color.parseColor("#006DFF"),Color.parseColor("#62A5FF")};
 
-    public static final String FRAG_DASHBOARD = "dashboard";
-    public static final String FRAG_CALENDAR = "calendar";
-    public static final String FRAG_ECLASS = "eclass";
-    public static final String FRAG_CLUBS = "clubs";
-    public static final String FRAG_CLUB_PAGE = "club page";
-    public static final String FRAG_PROFILE = "profile";
+    public static final String FRAG_DASHBOARD = "Fragment_Dashboard";
+    public static final String FRAG_CALENDAR = "Fragment_Calendar";
+    public static final String FRAG_ECLASS = "Fragment_eClass";
+    public static final String FRAG_CLUBS = "Fragment_Clubs";
+    public static final String FRAG_CLUB_PAGE = "Fragment_ClubPage";
+    public static final String FRAG_PROFILE = "Fragment_Profile";
 
     public static String student = "student";
 }
