@@ -73,8 +73,12 @@ public class Student_Delegate {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                             Student student = dataSnapshot.getValue(Student.class);
-                            if(student != null)
-                                Log.d("retrieve student","student found and sent");
+                            if(student != null) {
+                                Log.d("retrieve student", "student found and sent");
+                                if(student.getClubList() == null) {
+                                    student.setClubList(new ArrayList<Club>());
+                                }
+                            }
                             callback.accept(student);
                         }
                         @Override
