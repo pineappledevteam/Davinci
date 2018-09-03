@@ -15,6 +15,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.pineapple.davinci.R;
@@ -24,7 +25,11 @@ import com.pineapple.davinci.resources.Constants;
 import com.pineapple.davinci.resources.Singleton;
 import com.pineapple.davinci.studentutils.Student;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
+
+import static android.view.View.GONE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -97,18 +102,25 @@ public class Fragment_Clubs extends Fragment {
         Student student = Singleton.getInstance().getCurrStudent();
         studentClubs = student.getClubList();
 
-        GridView gridview = view.findViewById(R.id.gridview);
-        gridview.setAdapter(new ClubsDashboard_ImageAdapter(getActivity(), studentClubs, this.getResources().getDisplayMetrics().density));
-        //setGridViewHeightBasedOnChildren(gridview, gridview.getNumColumns());
-
-        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View v,
-                                    int position, long id) {
-                Toast.makeText(getActivity(), "" + studentClubs.get(position).getNameString(),
-                        Toast.LENGTH_SHORT).show();
-                mListener.goToClub(studentClubs.get(position).getNameString());
-            }
-        });
+        if(!studentClubs.isEmpty()){
+            TextView noclubs = view.findViewById(R.id.noclubs);
+            noclubs.setVisibility(View.INVISIBLE);
+            GridView gridview = view.findViewById(R.id.gridview);
+            gridview.setAdapter(new ClubsDashboard_ImageAdapter(getActivity(), studentClubs, this.getResources().getDisplayMetrics().density));
+            //setGridViewHeightBasedOnChildren(gridview, gridview.getNumColumns());
+            gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                public void onItemClick(AdapterView<?> parent, View v,
+                                        int position, long id) {
+                    Toast.makeText(getActivity(), "" + studentClubs.get(position).getNameString(),
+                            Toast.LENGTH_SHORT).show();
+                    mListener.goToClub(studentClubs.get(position).getNameString());
+                }
+            });
+        }
+        else{
+            TextView noclubs = view.findViewById(R.id.noclubs);
+            noclubs.setText("You have not joined any clubs.\nJoin a club today!");
+        }
 
         settings = view.findViewById(R.id.imageButton3);
         settings.setOnClickListener(new View.OnClickListener() {
