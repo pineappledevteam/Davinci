@@ -1,6 +1,5 @@
 package com.pineapple.davinci.activities;
 
-import android.app.ActivityManager;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
@@ -17,9 +16,7 @@ import com.pineapple.davinci.R;
 import com.pineapple.davinci.resources.BottomNavigationViewHelper;
 import com.pineapple.davinci.resources.Constants;
 
-import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
 public class Activity_MainPages extends AppCompatActivity
         implements Fragment_Dashboard.OnFragmentInteractionListener,
@@ -75,11 +72,13 @@ public class Activity_MainPages extends AppCompatActivity
 
         active = dashboardDisplayFragment;
 
-        fragmentManager.beginTransaction().add(R.id.fragMainContainer, calendarDisplayFragment, "calendar fragment").hide(calendarDisplayFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.fragMainContainer, eClassDisplayFragment, "eClass fragment").hide(eClassDisplayFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.fragMainContainer, clubsDisplayFragment, "clubs fragment").hide(clubsDisplayFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.fragMainContainer, profileDisplayFragment, "profile fragment").hide(profileDisplayFragment).commit();
-        fragmentManager.beginTransaction().add(R.id.fragMainContainer, dashboardDisplayFragment, "dashboard fragment").show(dashboardDisplayFragment).commit();
+        Log.d("check active", "" + (active == dashboardFragment));
+
+        fragmentManager.beginTransaction().add(R.id.fragMainContainer, calendarDisplayFragment, Constants.FRAG_CALENDAR).hide(calendarDisplayFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.fragMainContainer, eClassDisplayFragment, Constants.FRAG_ECLASS).hide(eClassDisplayFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.fragMainContainer, clubsDisplayFragment, Constants.FRAG_CLUBS).hide(clubsDisplayFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.fragMainContainer, profileDisplayFragment, Constants.FRAG_PROFILE).hide(profileDisplayFragment).commit();
+        fragmentManager.beginTransaction().add(R.id.fragMainContainer, dashboardDisplayFragment, Constants.FRAG_DASHBOARD).show(dashboardDisplayFragment).commit();
 
 
 
@@ -94,23 +93,23 @@ public class Activity_MainPages extends AppCompatActivity
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_dashboard:
-                        fragmentManager.beginTransaction().hide(active).show(dashboardDisplayFragment).addToBackStack("dashboard fragment").commit();
+                        fragmentManager.beginTransaction().hide(active).show(dashboardDisplayFragment).addToBackStack(Constants.FRAG_DASHBOARD).commit();
                         active = dashboardDisplayFragment;
                         return true;
                     case R.id.navigation_calendar:
-                        fragmentManager.beginTransaction().hide(active).show(calendarDisplayFragment).addToBackStack("calendar fragment").commit();
+                        fragmentManager.beginTransaction().hide(active).show(calendarDisplayFragment).addToBackStack(Constants.FRAG_CALENDAR).commit();
                         active = calendarDisplayFragment;
                         return true;
                     case R.id.navigation_eclass:
-                        fragmentManager.beginTransaction().hide(active).show(eClassDisplayFragment).addToBackStack("eClass fragment").commit();
+                        fragmentManager.beginTransaction().hide(active).show(eClassDisplayFragment).addToBackStack(Constants.FRAG_ECLASS).commit();
                         active = eClassDisplayFragment;
                         return true;
                     case R.id.navigation_clubs:
-                        fragmentManager.beginTransaction().hide(active).show(clubsDisplayFragment).addToBackStack("clubs fragment").commit();
+                        fragmentManager.beginTransaction().hide(active).show(clubsDisplayFragment).addToBackStack(Constants.FRAG_CLUBS).commit();
                         active = clubsDisplayFragment;
                         return true;
                     case R.id.navigation_profile:
-                        fragmentManager.beginTransaction().hide(active).show(profileDisplayFragment).addToBackStack("profile fragment").commit();
+                        fragmentManager.beginTransaction().hide(active).show(profileDisplayFragment).addToBackStack(Constants.FRAG_PROFILE).commit();
                         active = profileDisplayFragment;
                         return true;
                 }
@@ -123,7 +122,7 @@ public class Activity_MainPages extends AppCompatActivity
     public void updateNavBar(String fragType) {
         compareActive(active,fragType);
         int numActivities = fragmentManager.getBackStackEntryCount();
-        StringBuilder toPrint = new StringBuilder("Fragment stack: ");
+        StringBuilder toPrint = new StringBuilder("");
         for(int i = 0; i < numActivities; i++) {
             FragmentManager.BackStackEntry backStackEntry = fragmentManager.getBackStackEntryAt(i);
             toPrint.append(backStackEntry.getName()).append(", ");
@@ -131,7 +130,7 @@ public class Activity_MainPages extends AppCompatActivity
         if(toPrint.toString().contains(","))
             toPrint = new StringBuilder(toPrint.substring(0, toPrint.lastIndexOf(",")));
         else
-            toPrint = new StringBuilder("Fragment stack: no activities");
+            toPrint = new StringBuilder("no activities");
         Log.d("fragment stack", toPrint.toString());
         switch (fragType) {
             case Constants.FRAG_DASHBOARD:
@@ -168,6 +167,7 @@ public class Activity_MainPages extends AppCompatActivity
     }
 
     private void compareActive(Fragment active, String fragType) {
+        Log.d("active fragment compare","THIS "+active.getClass().getName()+" SHOULD BE "+fragType);
         if(!active.getClass().getName().equals(fragType))
             fragmentManager.beginTransaction().hide(active).commit();
     }
@@ -178,19 +178,20 @@ public class Activity_MainPages extends AppCompatActivity
         if (!clubPageFragmentList.keySet().contains(clubName)) {
             Fragment_ClubPage newClubFragment = Fragment_ClubPage.newInstance(clubName);
             clubPageFragmentList.put(clubName, newClubFragment);
-            clubsDisplayFragment = newClubFragment;
-            ft.add(R.id.fragMainContainer, clubsDisplayFragment,"clubPage: "+clubName);
+            clubsDisplayFragment = clubPageFragmentList.get(clubName);
+            ft.add(R.id.fragMainContainer, clubsDisplayFragment,Constants.FRAG_CLUB_PAGE+":"+clubName);
         } else {
             clubsDisplayFragment = clubPageFragmentList.get(clubName);
         }
         currClub = clubName;
-        ft.show(clubsDisplayFragment).addToBackStack("clubs fragment: "+clubName).commit();
+        ft.show(clubsDisplayFragment).addToBackStack(Constants.FRAG_CLUB_PAGE+":"+clubName).commit();
         active = clubsDisplayFragment;
     }
 
     @Override
     public void selectClub(String clubName, Fragment_ClubPage fragment) {
-        Log.d("select club",clubPageFragmentList.size()+"");
+        Log.d("list size",clubPageFragmentList.size()+"");
+        Log.d("club opened",clubName);
 //        if (!clubPageFragmentList.keySet().contains(clubName)) {
 //            clubPageFragmentList.put(clubName, fragment);
 //        }
@@ -204,6 +205,6 @@ public class Activity_MainPages extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
-
+        super.onBackPressed();
     }
 }
