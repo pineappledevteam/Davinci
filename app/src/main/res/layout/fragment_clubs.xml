@@ -57,7 +57,7 @@
                     android:layout_alignStart="@+id/imageView6"
                     android:layout_below="@+id/imageView6"
                     android:text="@string/clubs"
-                    android:textAppearance="@style/header_clubs"
+                    android:textAppearance="@style/header"
                     tools:layout_editor_absoluteY="38dp" />
 
                 <ImageButton
@@ -87,6 +87,18 @@
                     android:numColumns="auto_fit"
                     android:stretchMode="columnWidth"
                     android:verticalSpacing="10dp" />
+
+                <TextView
+                    android:id="@+id/noclubs"
+                    android:layout_width="300dp"
+                    android:layout_height="80dp"
+                    android:layout_below="@id/clubs"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="140dp"
+                    android:text="NOCLUBS"
+                    android:textAlignment="center"
+                    android:textAppearance="@style/bigText"
+                    tools:layout_editor_absoluteY="38dp" />
 
             </RelativeLayout>
         </ScrollView>
