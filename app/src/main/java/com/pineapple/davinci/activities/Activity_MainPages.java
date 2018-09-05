@@ -120,19 +120,7 @@ public class Activity_MainPages extends AppCompatActivity
 
     @Override
     public void updateNavBar(String fragType) {
-        compareActive(active,fragType);
-        int numActivities = fragmentManager.getBackStackEntryCount();
-        StringBuilder toPrint = new StringBuilder("");
-        for(int i = 0; i < numActivities; i++) {
-            FragmentManager.BackStackEntry backStackEntry = fragmentManager.getBackStackEntryAt(i);
-            toPrint.append(backStackEntry.getName()).append(", ");
-        }
-        if(toPrint.toString().contains(","))
-            toPrint = new StringBuilder(toPrint.substring(0, toPrint.lastIndexOf(",")));
-        else
-            toPrint = new StringBuilder("no activities");
-        Log.d("fragment stack", toPrint.toString());
-
+        compareActive(fragType);
         switch (fragType) {
             case Constants.FRAG_DASHBOARD:
                 dashboardDisplayFragment = dashboardFragment;
@@ -167,10 +155,21 @@ public class Activity_MainPages extends AppCompatActivity
         }
     }
 
-    private void compareActive(Fragment active, String fragType) {
+    private void compareActive(String fragType) {
         Log.d("active fragment compare","THIS "+active.getClass().getName()+" SHOULD BE "+fragType);
         if(!active.getClass().getName().equals(fragType))
             fragmentManager.beginTransaction().hide(active).commit();
+        int numFragments = fragmentManager.getBackStackEntryCount();
+        StringBuilder toPrint = new StringBuilder("");
+        for(int i = 0; i < numFragments; i++) {
+            FragmentManager.BackStackEntry backStackEntry = fragmentManager.getBackStackEntryAt(i);
+            toPrint.append(backStackEntry.getName()).append(", ");
+        }
+        if(toPrint.toString().contains(","))
+            toPrint = new StringBuilder(toPrint.substring(0, toPrint.lastIndexOf(",")));
+        else
+            toPrint = new StringBuilder("no activities");
+        Log.d("fragment stack", toPrint.toString());
     }
 
     @Override
