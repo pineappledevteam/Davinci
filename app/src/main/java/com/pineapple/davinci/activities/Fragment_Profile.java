@@ -1,17 +1,30 @@
 package com.pineapple.davinci.activities;
 
+import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.IdRes;
 import android.support.annotation.NonNull;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pineapple.davinci.R;
 import com.pineapple.davinci.resources.Constants;
+import com.pineapple.davinci.resources.Singleton;
+import com.pineapple.davinci.studentutils.Student;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,7 +39,8 @@ public class Fragment_Profile extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
-
+    private static final int REQUEST_CALL = 1;
+    private static Student student;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -62,6 +76,8 @@ public class Fragment_Profile extends Fragment {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
+        student = Singleton.getInstance().getCurrStudent();
+
     }
 
     @Override
@@ -74,15 +90,133 @@ public class Fragment_Profile extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        //TODO: THIS IS ONCREATE FOR FRAGMENTS
+        createEvents(view, savedInstanceState);
+        loadData(view, savedInstanceState);
     }
+    private void createEvents(View view, Bundle savedInstanceState){//creates all the action listeners for the buttons
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            //mListener.onFragmentInteraction(uri);
+        //SETTINGS BUTTON
+        ImageButton settingsBtn = view.findViewById(R.id.imgBtn_settings);
+        settingsBtn.setOnClickListener(new View.OnClickListener() {//add listener for setting button
+            @Override
+            public void onClick(View v) {
+                //TODO SWITCH FRAGMENTS
+                /*
+                Intent startIntent = new Intent(getApplicationContext(), Activity_Settings.class);
+                startIntent.putExtra("com.pineapple.apps.yes"," Hello World!!");
+                startActivity(startIntent);
+                */
+            }
+        });
+        //EDIT PROFILE BUTTON
+        ImageButton editProfileBtn = view.findViewById(R.id.imgBtn_editProfile);
+        editProfileBtn.setOnClickListener(new View.OnClickListener() {//add listener for setting button
+            @Override
+            public void onClick(View v) {
+                //TODO switch fragments
+                /*
+                Intent startIntent = new Intent(getApplicationContext(), Activity_EditProfile.class);
+                startIntent.putExtra("com.pineapple.apps.yes"," Hello World!!");
+                startActivity(startIntent);
+                */
+            }
+        });
+        //EMAIL BUTTON
+        Button btnEmail = view.findViewById(R.id.btn_email);
+        btnEmail.setOnClickListener(new View.OnClickListener() {//add listener for setting button
+            @Override
+            public void onClick(View v) {
+                sendEmail();
+            }
+        });
+
+        Button btnCall = view.findViewById(R.id.btn_phoneNumber);
+        btnCall.setOnClickListener(new View.OnClickListener() {//add listener for setting button
+            @Override
+            public void onClick(View v) {
+
+                makePhoneCall();
+
+            }
+        });
+    }
+    private void loadData(View view, Bundle savedInstanceState){//fills all text and pictures with the correct data from the Student
+
+        //set profile name
+        ((TextView)view.findViewById(R.id.txt_profileName)).setText(student.getFirstName() + " " + student.getLastName());
+        //set grade
+        ((TextView)view.findViewById(R.id.txt_numGrade)).setText(Integer.toString(student.getGrade()));
+        //set description
+        ((TextView)view.findViewById(R.id.txt_desc)).setText(student.getDescription());
+    }
+    private void makePhoneCall() {
+        final String number = "6783337936";
+        if (number.trim().length() > 0) {
+            //TODO: fix this perms stuff
+            if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, REQUEST_CALL);
+            } else {
+
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getContext());
+
+                // set title
+                alertDialogBuilder.setTitle("Your Title");
+
+                // set dialog message
+                alertDialogBuilder
+                        .setMessage("Click yes to exit!")
+                        .setCancelable(false)
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+
+                                callNumber(number);
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // if this button is clicked, just close
+                                // the dialog box and do nothing
+                                dialog.cancel();
+                            }
+                        });
+                // create alert dialog
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                // show it
+                alertDialog.show();
+            }
+        } //first if phone number is not empty
+        else {
+            Toast.makeText(getContext(), "Enter Phone Number", Toast.LENGTH_SHORT).show();
         }
     }
+    private void callNumber(String number){//calls the number passed in
+        String dial = "tel:" + number;
+        if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+            startActivity(new Intent(Intent.ACTION_CALL, Uri.parse(dial)));
+        }
+    }
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_CALL) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                makePhoneCall();
+            } else {
+                Toast.makeText(getContext(), "Permission DENIED", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+    public void sendEmail(){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/plain");
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[] {"here@there.ie"});
+        try {
+            startActivity(Intent.createChooser(intent, "How to send mail?"));
+        } catch (android.content.ActivityNotFoundException ex) {
+            //do something else
+        }
+    }
+
+
 
     @Override
     public void onAttach(Context context) {
